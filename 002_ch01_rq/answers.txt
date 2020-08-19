@@ -4,7 +4,7 @@ B
 C
 C
 B
-D
-A
+C
+C
 A
 A
