@@ -1,8 +1,11 @@
-Grading at 08/22/2020:01:01:40.649426
-For commit ID 2ab39e160e1dab2b9f79b10338675adf79e53887
-Grading at Fri Aug 21 21:01:40 EDT 2020
+Grading at 08/22/2020:01:03:31.090657
+For commit ID f7a76880860772f15b676fe62500195a82d4237f
+Grading at Fri Aug 21 21:03:30 EDT 2020
 Checking errors.txt
-Line_4_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
+errors.txt is correct.
+Checking the syntax is code.c
+code.c has legal syntax
+Your file matched the expected output
 
-Overall Grade: FAILED
+Overall Grade: PASSED
