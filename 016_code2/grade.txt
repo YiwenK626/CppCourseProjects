@@ -1,34 +1,25 @@
-Grading at 08/25/2020:00:49:29.329455
-For commit ID 44a2b1a7dc37192022acb45324f7e664a594474e
-Grading at Mon Aug 24 20:49:29 EDT 2020
+Grading at 08/25/2020:00:52:10.054054
+For commit ID cf78e9840f334c618cf952bac48316cc897e73e4
+Grading at Mon Aug 24 20:52:09 EDT 2020
 Checking code2.c for legal syntax
 Checking for int printTriangle (int size)
 Found on line 4, column 1 
 Checking for int main(void)
 Found on line 26, column 1 
 Trying to run the code..
-Line_6_did_not_match
-Line_7_did_not_match
-Line_16_did_not_match
-Line_17_did_not_match
-Your file did not match the expected ouput
-Here is what you printed
-Here is a triangle with height 4
-*
-**
-***
-****
-*****
-That triangle had 15 total stars
-Here is a triangle with height 7
-*
-**
-***
-****
-*****
-******
-*******
-********
-That triangle had 36 total stars
+Your file matched the expected output
+Removing your main() and replacing it with our own to run more tests...
+Testing printTriangle(0) ... Correct
+Testing printTriangle(1) ... Correct
+Testing printTriangle(2) ... Correct
+Testing printTriangle(3) ... Correct
+Testing printTriangle(4) ... Correct
+Testing printTriangle(7) ... Correct
+Testing printTriangle(9) ... Correct
+Testing printTriangle(12) ... Correct
+Testing printTriangle(99) ... Correct
+Testing printTriangle(226) ... Correct
+Testing printTriangle(1818) ... Correct
+Testing printTriangle(2418) ... Correct
 
-Overall Grade: F
+Overall Grade: A
