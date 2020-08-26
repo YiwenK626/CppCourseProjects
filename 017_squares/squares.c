@@ -48,3 +48,8 @@ void squares(int size1, int x_offset, int y_offset, int size2) {
     printf("\n");
   }
 }
+
+// the (0,0) point is at the left top 
+// size 1 - the length of one side of square# 
+// size 2 - the length of one side of square* 
+// x_offset and y_offset - the relative (x,y) of square* to square# (positive) 
