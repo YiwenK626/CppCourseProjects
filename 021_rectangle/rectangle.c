@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+
+
 //I've provided "min" and "max" functions in
 //case they are useful to you
 int min (int a, int b) {
@@ -16,15 +19,57 @@ int max (int a, int b) {
 }
 
 //Declare your rectangle structure here!
+struct _rectangle {
+  int x;
+  int y;
+  int width; 
+  int height;
+};
 
+typedef struct _rectangle rectangle; 
 
 rectangle canonicalize(rectangle r) {
   //WRITE THIS FUNCTION
+  if (r.width < 0) {
+    r.x = r.x + r.width;
+    r.width = -r.width;
+  }
+  if (r.height < 0) {
+    r.y = r.y + r.height;
+    r.height = - r.height;
+  }
   return r;
 }
 rectangle intersection(rectangle r1, rectangle r2) {
   //WRITE THIS FUNCTION
-  return r1;
+  r1 = canonicalize(r1);
+  r2 = canonicalize(r2);
+  rectangle R; 
+  rectangle r;
+  R.x = min(r1.x, r2.x);
+  R.y = min(r1.y, r2.y);
+  R.width = max(r1.x+r1.width, r2.x+r2.width) - R.x; 
+  R.height = max(r1.y+r1.height, r2.y+r2.height) - R.y;
+  r.x = max(r1.x, r2.x);
+  r.y = max(r1.y, r2.y);
+  if (r1.x == r2.x && r1.y == r2.y && r1.width == r2.width && r1.height == r2.height) {
+    return r1;
+  }
+  if ((R.width > r1.width + r2.width) || (R.height > r1.height + r2.height)) {
+    r.height = 0;
+    r.width = 0;
+  }
+ // if ((R.width == r1.width && R.height == r1.height) || (R.width == r2.width && R.height == r2.height)){
+   // r.height = 0;
+   // r.width = 0;  
+  //}
+  else {
+    int X = min(r1.x + r1.width, r2.x + r2.width);
+    int Y = min(r1.y + r1.height, r2.y+ r2.height);
+    r.width = X - r.x;
+    r.height = Y - r.y;
+  }
+  return r;
 }
 
 //You should not need to modify any code below this line
