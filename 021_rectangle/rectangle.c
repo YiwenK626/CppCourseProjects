@@ -62,7 +62,11 @@ rectangle intersection(rectangle r1, rectangle r2) {
  // if ((R.width == r1.width && R.height == r1.height) || (R.width == r2.width && R.height == r2.height)){
    // r.height = 0;
    // r.width = 0;  
-  //}
+  //} 
+  // overlapping includes containing here 
+  // delete one if so the previous one can connect with the else statement, otherwise it will be overlapped 
+  // eventhough intersection(r1,r4) didn't fall into the if statement deleted, its results from the previous one
+  // will be overlapped with the else statement, and then goes into a canoonicalize process, leading to a bug. 
   else {
     int X = min(r1.x + r1.width, r2.x + r2.width);
     int Y = min(r1.y + r1.height, r2.y+ r2.height);
