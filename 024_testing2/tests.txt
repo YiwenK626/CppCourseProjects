@@ -1,0 +1,13 @@
+aaaa aaaax
+aaaax aaaa
+abcde abcdee
+abcdee abcde
+Aaaaa xaaaa
+01010 00000
+1+2+3 abcde
+"aaa" "aaa"
+aa aa aabaa
+abcde
+abcde abcde abcde 
+1234 567890
+abcdee abcde
