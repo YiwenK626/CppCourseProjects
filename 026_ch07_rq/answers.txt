@@ -1,9 +1,9 @@
 C
-D
-A
 B
 D
 B
+D
+C
 B
 C
-C
+D
