@@ -1,14 +1,14 @@
 D
 B
 A
+B
 C
-C
-C
+B
 C
 C
 F
 B
-C
+D
 C
 F
 C
