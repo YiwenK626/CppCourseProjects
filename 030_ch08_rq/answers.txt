@@ -1,7 +1,7 @@
 D
 B
 A
-B
+C
 C
 B
 C
@@ -14,4 +14,4 @@ F
 C
 B
 C
-A
+C
