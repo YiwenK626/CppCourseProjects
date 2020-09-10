@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+size_t maxSeq(int * array, size_t n);
+
+int test(int * array, size_t n, size_t ans) {
+  if (maxSeq(array, n) != ans) {
+    printf("fail to pass the test");
+    return 0;
+  }
+  return 1;
+}
+
+int main() {
+  int ind = test({}, 0. 0) * test({1, 2, 3, 1, 6}, 5, 3);
+  if (ind != 0) {
+    return EXIT_SUCCESS;
+  }
+  return EXIT_FAILURE;
+}
