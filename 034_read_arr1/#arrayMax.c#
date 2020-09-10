@@ -1,0 +1,12 @@
+int * arrayMax(int * array, int n){
+  if (n == 0) {
+    return NULL;
+  }
+  int max_id = 0;
+  for (int i = 1; i < n; i++) {
+    if (array[max_id] < array[i]){
+      max_id = i;
+      
+    }
+  }
+}
