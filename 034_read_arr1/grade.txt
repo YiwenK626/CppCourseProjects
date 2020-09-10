@@ -1,6 +1,6 @@
-Grading at 09/09/2020:13:43:26.911373
-For commit ID 73481f7cfde24fcf1e494146a9f258bb00226c48
-Grading at Wed Sep  9 09:43:26 EDT 2020
+Grading at 09/10/2020:21:13:32.347145
+For commit ID 681b52d639a17811634fb60b3737fad819cb7099
+Grading at Thu Sep 10 17:13:32 EDT 2020
 Attempting to compile test.c
 gcc -o test -Werror -Wall -pedantic -std=gnu99 test.c
 compiled
