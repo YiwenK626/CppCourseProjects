@@ -10,8 +10,10 @@ void reverse(char * str) {
   const char * src = str;
   // printf("%s\n", str);
   char * str_temp = strncpy(dest, src, n);
-  for (int i = 0; i < n; i++) {
-    str[i] = str_temp[n - 1 - i];
+  if (n != 0) {
+    for (int i = 0; i < n; i++) {
+      str[i] = str_temp[n - 1 - i];
+    }
   }
 }
 
