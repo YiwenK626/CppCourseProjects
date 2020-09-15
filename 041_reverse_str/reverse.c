@@ -5,16 +5,18 @@
 void reverse(char * str) {
   // store str at another place str_temp
   // read the i char of str_temp and assign it to n-i char of str
-  int n = strlen(str);
-  char dest[n+1];
-  const char * src = str;
-
-  char * str_temp = strncpy(dest, src, n+1);
-  //printf("%s\n", str_temp);
-  //str_temp[n] = '\0';
-  if (n > 0 ) {
-    for (int i = 0; i < n; i++) {
-      str[i] = str_temp[n - 1 - i];
+  if (str != NULL){
+    int n = strlen(str);
+    char dest[n+1];
+    const char * src = str;
+  
+    char * str_temp = strncpy(dest, src, n+1);
+    //printf("%s\n", str_temp);
+    //str_temp[n] = '\0';
+    if (n > 0) {
+      for (int i = 0; i < n; i++) {
+        str[i] = str_temp[n - 1 - i];
+      }
     }
   }
 }
