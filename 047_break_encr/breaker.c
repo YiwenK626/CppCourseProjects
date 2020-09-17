@@ -31,7 +31,7 @@ int freq(FILE * f) {
     key = 0;
   }
   else {
-    if (maxind(array, 26) < 'e') {
+    if (maxind(array, 26) < 'e'- 'a') {
       key = 26 + maxind(array, 26) + 'a' - 'e';
     }
     else {
