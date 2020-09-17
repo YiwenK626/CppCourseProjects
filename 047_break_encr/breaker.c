@@ -11,12 +11,12 @@ int maxind(int * array, size_t n) {
       ind = i;
     }
   }
-  // printf("the %d th alphabet\n", ind);
   return ind;
 }
 
 int freq(FILE * f) {
   int c;
+  int i = 0;
   int array[26] = {0};
   while ((c = fgetc(f)) != EOF) {
     if (isalpha(c)) {
@@ -24,10 +24,15 @@ int freq(FILE * f) {
       int num = c - 'a';
       array[num]++;
     }
+    i++;
   }
-  // find the max
-  int key = maxind(array, 26) + 'a' - 'e';
-  //printf("the key %d\n", key);
+  int key;
+  if (i == 0) {
+    key = 0;
+  }
+  else {
+    key = maxind(array, 26) + 'a' - 'e';
+  }
   return key;
 }
 
@@ -49,13 +54,10 @@ int main(int argc, char ** argv) {
   }
 
   FILE * f = fopen(argv[1], "r");
-  // printf("%s\n", argv[1]);
   if (f == NULL) {
     perror("Could not open the file");
     return EXIT_FAILURE;
   }
-  //calculate frequency
-  //obtain the key
   int key = freq(f);
   //unencrypted with key
   //unencrypt(f, key);
