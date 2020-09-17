@@ -22,6 +22,7 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
   int key = atoi(argv[1]);
+  printf("%d",key);
   if (key == 0) {
     fprintf(stderr,"Invalid key (%s): must be a non-zero integer\n", argv[1]);
     return EXIT_FAILURE;
