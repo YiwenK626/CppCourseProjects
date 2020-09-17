@@ -37,8 +37,9 @@ int freq(FILE * f) {
     else {
       key = maxind(array, 26) + 'a' - 'e';
     }
-    return key;
   }
+  return key;
+}
 
   void unencrypt(FILE * f, int key) {
     int c;
