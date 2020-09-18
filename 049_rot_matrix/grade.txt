@@ -1,0 +1,17 @@
+Grading at 09/18/2020:22:22:28.353779
+For commit ID 09ad25912693bb9271c6c04705f83e879daa7383
+Grading at Fri Sep 18 18:22:28 EDT 2020
+Attempting to compile rotateMatrix.c
+rotateMatrix.c: In function ‘tomatrix’:
+rotateMatrix.c:25:14: error: multi-character character constant [-Werror=multichar]
+       printf('%c', matrix[a][b]);
+              ^~~~
+rotateMatrix.c:25:14: error: passing argument 1 of ‘printf’ makes pointer from integer without a cast [-Werror=int-conversion]
+In file included from rotateMatrix.c:2:0:
+/usr/include/stdio.h:318:12: note: expected ‘const char * restrict’ but argument is of type ‘int’
+ extern int printf (const char *__restrict __format, ...);
+            ^~~~~~
+cc1: all warnings being treated as errors
+The code did not compile!
+
+Overall Grade: F
