@@ -8,11 +8,12 @@ void tomatrix(FILE * f) {
   int i = 0;
   int j = 9;
   int stop = 0;
-  int matrix[10][10] = {0};
+  int matrix[11][11] = {0};
   while ((c = fgetc(f)) != EOF && stop == 0) {
+    // printf("%c", c);
     matrix[i][j] = c;
     i++;
-    if (i == 10) {
+    if (i == 11) {
       j--;
       i = 0;
     }
@@ -20,11 +21,14 @@ void tomatrix(FILE * f) {
       stop = 1;
     }
   }
+
   for (int a = 0; a < 10; a++) {
-    for (int b = 0; b < 10; b++) {
-      printf('%c', matrix[a][b]);
+    matrix[a][10] = '\n';
+    for (int b = 0; b < 11; b++) {
+      printf("%c", matrix[a][b]);
     }
   }
+  // printf("\n");
 }
 
 int main(int argc, char ** argv) {
@@ -33,7 +37,7 @@ int main(int argc, char ** argv) {
     return EXIT_FAILURE;
   }
 
-  FILE * f = fopen(argv[2], "r");
+  FILE * f = fopen(argv[1], "r");
   tomatrix(f);
   if (f == NULL) {
     perror("could not open file");
