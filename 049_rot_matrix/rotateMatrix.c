@@ -7,7 +7,7 @@ int tomatrix(FILE * f) {
   int c;
   int i = 0;
   int j = 9;
-  //int stop = 0;
+
   int matrix[11][11] = {0};
   while ((c = fgetc(f)) != EOF) {
     if (c > 127) {
@@ -19,14 +19,18 @@ int tomatrix(FILE * f) {
       fprintf(stderr, "too much lines\n");
       return EXIT_FAILURE;
     }
+
     // printf("%c", c);
     matrix[i][j] = c;
     i++;
+
     if (i == 11) {
       j--;
       i = 0;
     }
   }
+  // i j should exit loop as 0 and -1
+
   if (j >= 0) {
     fprintf(stderr, "too few lines\n");
     return EXIT_FAILURE;
@@ -61,7 +65,12 @@ int main(int argc, char ** argv) {
 
   FILE * f = fopen(argv[1], "r");
 
-  tomatrix(f);
+  int exit = tomatrix(f);
+  if (exit == 1) {
+    fprintf(stderr, "exit with failure\n");
+    return EXIT_FAILURE;
+  }
+
   if (f == NULL) {
     perror("could not open file");
     return EXIT_FAILURE;
