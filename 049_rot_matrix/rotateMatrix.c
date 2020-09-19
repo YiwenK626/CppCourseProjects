@@ -3,13 +3,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-void tomatrix(FILE * f) {
+int tomatrix(FILE * f) {
   int c;
   int i = 0;
   int j = 9;
-  int stop = 0;
+  //int stop = 0;
   int matrix[11][11] = {0};
-  while ((c = fgetc(f)) != EOF && stop == 0) {
+  while ((c = fgetc(f)) != EOF) {
+    if (c > 127) {
+      fprintf(stderr, "unprintable char\n");
+      return EXIT_FAILURE;
+    }
+
+    if (j < 0) {
+      fprintf(stderr, "too much lines\n");
+      return EXIT_FAILURE;
+    }
     // printf("%c", c);
     matrix[i][j] = c;
     i++;
@@ -17,18 +26,31 @@ void tomatrix(FILE * f) {
       j--;
       i = 0;
     }
-    if (j < 0) {
-      stop = 1;
+  }
+  if (j >= 0) {
+    fprintf(stderr, "too few lines\n");
+    return EXIT_FAILURE;
+  }
+
+  for (int k = 0; k < 10; k++) {
+    if (matrix[10][k] != '\n') {
+      fprintf(stderr, "too much chars\n");
+      return EXIT_FAILURE;
     }
   }
 
   for (int a = 0; a < 10; a++) {
     matrix[a][10] = '\n';
     for (int b = 0; b < 11; b++) {
+      if (matrix[a][b] == '\n' && b < 10) {
+        fprintf(stderr, "too few chars\n");
+        return EXIT_FAILURE;
+      }
       printf("%c", matrix[a][b]);
     }
   }
   // printf("\n");
+  return EXIT_SUCCESS;
 }
 
 int main(int argc, char ** argv) {
@@ -38,6 +60,7 @@ int main(int argc, char ** argv) {
   }
 
   FILE * f = fopen(argv[1], "r");
+
   tomatrix(f);
   if (f == NULL) {
     perror("could not open file");
