@@ -2,10 +2,10 @@ B
 B
 K
 D
-D
-A
+B
+E
 C
 B
-A
+C
 B
 F
