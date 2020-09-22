@@ -7,15 +7,15 @@
 #include <string.h>
 
 country_t parseLine(char * line) {
-  //WRITE ME
   country_t ans;
+  //null input
   if (line == NULL) {
     ans.name[0] = '\0';
     ans.population = 0;
     printf("null input");
     return ans;
   }
-
+  //untyped char
   int len = sizeof(line);
   for (int j = 0; j < len; j++) {
     if (line[j] > 255) {
@@ -25,6 +25,7 @@ country_t parseLine(char * line) {
       return ans;
     }
   }
+  //more or less inputs
 
   int coma = ',';
   char * ptr = strchr(line, coma);
@@ -48,11 +49,26 @@ country_t parseLine(char * line) {
 }
 
 void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
-  //WRITE ME
+  //unmatched country more or less
+  //null add input
+
+  for (int i = 0; i < n_days - 6; i++) {
+    int sum = 0;
+    for (int j = i; j < i + 7; j++) {
+      sum += data[j];
+    }
+    avg[i] = sum / 7.0;
+  }
 }
 
 void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) {
-  //WRITE ME
+  //unmatched coutry more or less
+  //null add input
+  int sum = 0;
+  for (int i = 0; i < n_days; i++) {
+    sum += data[i];
+    cum[i] = sum / (pop / 100000.0);
+  }
 }
 
 void printCountryWithMax(country_t * countries,
@@ -60,4 +76,16 @@ void printCountryWithMax(country_t * countries,
                          unsigned ** data,
                          size_t n_days) {
   //WRITE ME
+  unsigned number_cases = 0;
+  int ind_country = 0;
+  for (size_t i = 0; i < n_countries; i++) {
+    for (size_t j = 0; j < n_days; j++) {
+      if (data[i][j] > number_cases) {
+        number_cases = data[i][j];
+        ind_country = i;
+      }
+    }
+  }
+  char * country_name = countries[ind_country];
+  printf("%s has the most daily cases with %u\n", country_name, number_cases);
 }
