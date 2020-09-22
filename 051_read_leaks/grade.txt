@@ -1,8 +1,7 @@
-Grading at 09/22/2020:21:35:34.715300
-For commit ID 122176295f74e0a83fba58978a6d22fdeb4f4e2a
-Grading at Tue Sep 22 17:35:33 EDT 2020
+Grading at 09/22/2020:21:37:36.071466
+For commit ID ad78c1d7af2a65e9fb91f3aa2f3499713ad9f575
+Grading at Tue Sep 22 17:37:34 EDT 2020
 Line_1_did_not_match
-Line_2_did_not_match
 Your file did not match the expected ouput
 Your output did not match what we expected.
 Attempting to compile test.c
