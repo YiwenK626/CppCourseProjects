@@ -7,44 +7,59 @@
 #include <string.h>
 
 country_t parseLine(char * line) {
-  country_t ans;
-  //null input
-  if (line == NULL) {
-    ans.name[0] = '\0';
-    ans.population = 0;
-    printf("null input");
-    return ans;
+  //error: null input
+  if (*line == '\n') {
+    printf("Null input: blank line\n");
+    exit(EXIT_FAILURE);
   }
-  //untyped char
-  int len = sizeof(line);
-  for (int j = 0; j < len; j++) {
-    if (line[j] > 255) {
-      ans.name[0] = '\0';
-      ans.name[0] = 0;
-      printf("untypable char");
-      return ans;
+  //error: untyped char
+  int j = 0;
+  while (line[j] != '\n') {
+    if (line[j] > 127 || line[j] < 32) {
+      printf("Illegal input: untypable char\n");
+      exit(EXIT_FAILURE);
     }
+    j++;
   }
-  //more or less inputs
 
-  int coma = ',';
-  char * ptr = strchr(line, coma);
-  *ptr = '\0';
+  //fetch country name
+  int comma = ',';                    //identify delimiter
+  char * ptr = strrchr(line, comma);  //find the last but also the only comma in line
+  *ptr = '\0';                        //replace the delimter with a termination sign
+  //error: multiple delimiter
+  if (strchr(line, comma) != NULL) {  //if find another comma exit with failure
+    printf("Illegal input: name contains ,\n");
+    exit(EXIT_FAILURE);
+  }
+  country_t ans;
+  strcpy(ans.name, line);
+
+  //fetch population
   ptr++;
+  //error: invalid number
+  if (*ptr == '0') {
+    printf("Illegal input: population starts with zero or space\n");
+    exit(EXIT_FAILURE);
+  }
   char arr[15] = {0};
   for (int i = 0; i < 15; i++) {
-    if (*ptr != '\n') {
+    //error: invalid number with non-digits
+    if (isdigit(*ptr) == 0) {
+      printf("Illegal input: population contains char\n");
+      exit(EXIT_FAILURE);
+    }
+    if (*ptr != '\n') {  //read every digit into arr[]
       arr[i] = *ptr;
       ptr++;
     }
     else {
-      arr[i] = '\0';
+      arr[i] = '\0';  //stop when read '\0'
       continue;
     }
   }
-  int64_t pop = atoi(arr);
-  strcpy(ans.name, line);
+  int64_t pop = atoi(arr);  //switch char into int64_t
   ans.population = pop;
+
   return ans;
 }
 
