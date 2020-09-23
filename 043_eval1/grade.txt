@@ -1,6 +1,6 @@
-Grading at 09/23/2020:02:58:22.333419
-For commit ID 32ef5e6ce4fa9fc1638c41d4ffe2d61f514cdeb4
-Grading at Tue Sep 22 22:58:21 EDT 2020
+Grading at 09/23/2020:22:59:09.799139
+For commit ID c5b5b0056dcd9b23a90978962bd9b79ef9ca3daf
+Grading at Wed Sep 23 18:59:09 EDT 2020
 Doing some basic checking for your submission.
 
 Checking that your code compiles
@@ -14,22 +14,26 @@ The code compiled (good)
 Checking with the provided test cases
 
 Testing ./printCountries pop.csv 
-Your file matched the expected output
-Passed
+Line_1_did_not_match
+Your file did not match the expected ouput
+Failed
 
 Testing ./printRunningAvg pop.csv daily.csv
-Your file matched the expected output
-Passed
+Line_1_did_not_match
+Your file did not match the expected ouput
+Failed
 
 Testing ./printCumulative pop.csv daily.csv
-Your file matched the expected output
-Passed
+Line_1_did_not_match
+Your file did not match the expected ouput
+Failed
 
 Testing ./printDailyMax pop.csv daily.csv
-Your file matched the expected output
-Passed
+Line_1_did_not_match
+Your file did not match the expected ouput
+Failed
 
-You have passed the pregrader tests
-You should still run comprehensive tests of your own
+You have NOT passed the pregrader tests
+You should debug the indicated test cases
 
 Overall Grade: NO GRADE YET
