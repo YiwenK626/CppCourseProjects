@@ -75,7 +75,6 @@ void printCountryWithMax(country_t * countries,
                          size_t n_countries,
                          unsigned ** data,
                          size_t n_days) {
-  //WRITE ME
   unsigned number_cases = 0;
   int ind_country = 0;
   for (size_t i = 0; i < n_countries; i++) {
