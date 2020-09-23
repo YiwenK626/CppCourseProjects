@@ -16,7 +16,7 @@ country_t parseLine(char * line) {
   int j = 0;
   while (line[j] != '\n') {
     if (line[j] > 127 || line[j] < 32) {
-      printf("Illegal input: untypable char\n");
+      printf("Illegal input: untypable char or no new line at the end\n");
       exit(EXIT_FAILURE);
     }
     j++;
@@ -38,8 +38,11 @@ country_t parseLine(char * line) {
   ptr++;
   //error: invalid number
   if (*ptr == '0') {
-    printf("Illegal input: population starts with zero or space\n");
-    exit(EXIT_FAILURE);
+    ptr++;
+    if (*ptr != '\n') {
+      printf("Illegal input: population starts with zero or space\n");
+      exit(EXIT_FAILURE);
+    }
   }
   char arr[11] = {0};
   for (int i = 0; i < 11; i++) {
@@ -76,6 +79,11 @@ void calcRunningAvg(unsigned * data, size_t n_days, double * avg) {
        i++) {  //for each 7 days calculate sum and move to the next day as startpoint
     int sum = 0;
     for (int j = i; j < i + 7; j++) {
+      //error: case data typo
+      if (data[j] > 200000) {  // define daily case larger than 200,000 as potential error
+        printf("data error: cases too large");
+        exit(EXIT_FAILURE);
+      }
       sum += data[j];
     }
     avg[i] = sum / 7.0;  //calculate 7-day moving average
@@ -86,6 +94,11 @@ void calcCumulative(unsigned * data, size_t n_days, uint64_t pop, double * cum) 
   int sum = 0;
   for (int i = 0; i < n_days;
        i++) {  //calculate cumulative cases among all population as days pass
+    if (data[i] > 200000) {
+      //error: case data typo
+      printf("data error: cases too large");
+      exit(EXIT_FAILURE);
+    }
     sum += data[i];
     cum[i] = sum / (pop / 100000.0);  //calculate cases per 1000000 people
   }
