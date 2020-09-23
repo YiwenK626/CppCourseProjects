@@ -86,6 +86,6 @@ void printCountryWithMax(country_t * countries,
       }
     }
   }
-  char * country_name = countries[ind_country];
+  char * country_name = countries[ind_country].name;
   printf("%s has the most daily cases with %u\n", country_name, number_cases);
 }
