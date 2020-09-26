@@ -14,25 +14,28 @@ int stringOrder(const void * vp1, const void * vp2) {
 void sortData(char ** data, size_t count) {
   qsort(data, count, sizeof(char *), stringOrder);
   for (int n = 0; n < count; n++) {
-    printf("%c", *(data[n]));
+    printf("%s", data[n]);
   }
 }
 
 int main(int argc, char ** argv) {
   //WRITE YOUR CODE HERE!
+  //char * line_buf = NULL;
   char * line_buf = NULL;
   size_t buf_size = 0;
   ssize_t line_size = 0;
   int i = 0;
-  char ** data = {0};
+  char ** data;
+
   if (argc == 1) {
     while (line_size >= 0) {
-      line_size = getline(&line_buf, &buf_size, stdin);
+      line_size = getline(&line, &buf_size, stdin);
       data[i] = line_buf;
       i++;
     }
+    free(data);
 
-    sortData(data, i + 1);
+    sortData(data, i - 1);
   }
   else {
     int i = 1;
@@ -42,18 +45,19 @@ int main(int argc, char ** argv) {
         fprintf(stderr, "Error opening file '%s'\n", argv[i]);
         exit(EXIT_FAILURE);
       }
-      int count = 0;
       while (line_size >= 0) {
-        count++;
-        line_size = getline(&line_buf, &buf_size, f);
-        sortData(&line_buf, buf_size);
+        line_size = getline(&data[i], &buf_size, f);
+        i++;
       }
+
+      sortData(data, i - 1);
+
       fclose(f);
       //fclose failure
     }
-
-    free(line_buf);
-    line_buf = NULL;
-    return EXIT_SUCCESS;
+    free(data);
   }
+  //free(data);
+  //line_buf = NULL;
+  return EXIT_SUCCESS;
 }
