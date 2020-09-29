@@ -36,8 +36,9 @@ void addRandomMine(board_t * b) {
     y = random() % b->height;
     assert(limit > 0);
     limit--;
-  } while (b->board[y][x] == HAS_MINE);
-  b->board[y][x] = HAS_MINE;
+  } while (b->board[y][x] ==
+           HAS_MINE);         // if y,x has already been added as mine, try another time
+  b->board[y][x] = HAS_MINE;  // if not, add as mine
 }
 
 board_t * makeBoard(int w, int h, int numMines) {
@@ -120,7 +121,7 @@ int countMines(board_t * b, int x, int y) {
       int ny = y + dy;
       if (nx >= 0 && nx < b->width && ny >= 0 && ny < b->height) {
         if (IS_MINE(b->board[ny][nx])) {
-          count++;
+          count++;  // count the surrounding mines and itself(which must be safe)
         }
       }
     }
@@ -129,20 +130,23 @@ int countMines(board_t * b, int x, int y) {
   return count;
 }
 int click(board_t * b, int x, int y) {
-  if (x < 0 || x >= b->width || y < 0 || y >= b->height) {
+  if (x < 0 || x >= b->width || y < 0 || y >= b->height) {  // not in the board range
     return CLICK_INVALID;
   }
-  if (b->board[y][x] == KNOWN_MINE) {
+  if (b->board[y][x] == KNOWN_MINE) {  // clicked the known mine
     return CLICK_KNOWN_MINE;
   }
-  if (b->board[y][x] == HAS_MINE) {
+  if (b->board[y][x] == HAS_MINE) {  // clicked the unknown mine - lose
     return CLICK_LOSE;
   }
-  if (b->board[y][x] != UNKNOWN) {
+  if (b->board[y][x] != UNKNOWN) {  // clicked the shown safe cell - continue
     return CLICK_CONTINUE;
   }
 
-  b->board[y][x] = countMines(b, x, y);
+  b->board[y][x] = countMines(
+      b,
+      x,
+      y);  // UNKNOWN, i.e. unshown safe cells  -  fill the cell with amount of surrounding mines
   return CLICK_CONTINUE;
 }
 
@@ -207,16 +211,18 @@ void doReveal(board_t * b, int x, int y, int revealMines) {
     for (int dx = -1; dx <= 1; dx++) {
       int nx = x + dx;
       int ny = y + dy;
-      if (nx >= 0 && nx < b->width && ny >= 0 && ny < b->height) {
-        if (revealMines) {
+      if (nx >= 0 && nx < b->width && ny >= 0 &&
+          ny < b->height) {  // for surroundings within the board
+        if (revealMines) {   // if cell value = unknown cells (all remaining are mines)
           assert(b->board[ny][nx] != UNKNOWN);
-          if (b->board[ny][nx] == HAS_MINE) {
+          if (b->board[ny][nx] == HAS_MINE) {  // turn hiden mines into known mines
             b->board[ny][nx] = KNOWN_MINE;
           }
         }
-        else {
-          assert(b->board[ny][nx] != HAS_MINE);
-          if (b->board[ny][nx] == UNKNOWN) {
+        else {  // if cell value = known mines (none remaining are mines)
+          assert(b->board[ny][nx] !=
+                 HAS_MINE);  // make sure remaining cell do not have mines
+          if (b->board[ny][nx] == UNKNOWN) {  // turn the remaining into numbers
             b->board[ny][nx] = countMines(b, nx, ny);
           }
         }
@@ -228,15 +234,17 @@ void doReveal(board_t * b, int x, int y, int revealMines) {
 int maybeReveal(board_t * b, int x, int y) {
   int unknownSquares = 0;
   int knownMines = 0;
-  for (int dy = -1; dy <= 1; dy++) {
+  for (int dy = -1; dy <= 1; dy++) {  // for the surrounding of each cell
     for (int dx = -1; dx <= 1; dx++) {
       int nx = x + dx;
       int ny = y + dy;
-      if (nx >= 0 && nx < b->width && ny >= 0 && ny < b->height) {
-        if (b->board[ny][nx] == UNKNOWN || b->board[ny][nx] == HAS_MINE) {
+      if (nx >= 0 && nx < b->width && ny >= 0 &&
+          ny < b->height) {  // if it's in the range of board
+        if (b->board[ny][nx] == UNKNOWN ||
+            b->board[ny][nx] == HAS_MINE) {  // count total unknown cells
           unknownSquares++;
         }
-        else if (b->board[ny][nx] == KNOWN_MINE) {
+        else if (b->board[ny][nx] == KNOWN_MINE) {  // count total known mines
           knownMines++;
         }
       }
@@ -244,10 +252,11 @@ int maybeReveal(board_t * b, int x, int y) {
   }
   assert(knownMines + unknownSquares >= b->board[y][x]);
   assert(knownMines <= b->board[y][x]);
-  if (unknownSquares > 0) {
+  if (unknownSquares > 0) {  // if there are unknown cells
     int revealMines = (knownMines + unknownSquares == b->board[y][x]);
     int allKnown = knownMines == b->board[y][x];
-    if (revealMines || allKnown) {
+    if (revealMines ||
+        allKnown) {  // either cell value = known mines or unknown cells, i.e. remaining are all safe or all mines
       assert(!revealMines || !allKnown);
       doReveal(b, x, y, revealMines);
       return 1;
@@ -255,16 +264,17 @@ int maybeReveal(board_t * b, int x, int y) {
   }
   return 0;
 }
-void determineKnownMines(board_t * b) {
+void determineKnownMines(
+    board_t * b) {  // as long as there is a cell that maybeReveal == 1, repeat this step
   int foundMore = 0;
   for (int y = 0; y < b->height; y++) {
     for (int x = 0; x < b->width; x++) {
       if (b->board[y][x] >= 0) {
         foundMore = maybeReveal(b, x, y) || foundMore;
-      }
+      }  // complete when there is unknown cells
     }
   }
-  if (foundMore) {
+  if (foundMore) {  // foundMore = 1, need to found more because there are unknown cells
     determineKnownMines(b);
   }
 }
@@ -282,10 +292,10 @@ int playTurn(board_t * b, char ** linep, size_t * lineszp) {
   printf("Current board:\n");
   printBoard(b);
   printf("x coordinate:\n");
-  int x = readInt(linep, lineszp);
+  int x = readInt(linep, lineszp);  // read x
   printf("y coordinate:\n");
-  int y = readInt(linep, lineszp);
-  int result = click(b, x, y);
+  int y = readInt(linep, lineszp);  // read y
+  int result = click(b, x, y);      // return the property of cell clicked
   determineKnownMines(b);
   if (result == CLICK_LOSE) {
     printf("Oh no! That square had a mine. You lose!\n");
@@ -325,10 +335,10 @@ int main(int argc, char ** argv) {
   do {
     board_t * b = makeBoard(width, height, numMines);
     int gameOver = 0;
-    while (!gameOver) {
-      gameOver = playTurn(b, &line, &linesz);
+    while (!gameOver) {                        // while the game is not won/lost
+      gameOver = playTurn(b, &line, &linesz);  // play the game
     }
-    freeBoard(b);
+    freeBoard(b);  // game ends, free the memory
     do {
       printf("Do you want to play again?\n");
     } while (getline(&line, &linesz, stdin) == -1);
