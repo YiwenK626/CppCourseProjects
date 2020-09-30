@@ -1,6 +1,6 @@
-Grading at 09/29/2020:20:26:14.040457
+Grading at 09/30/2020:18:58:18.722642
 For commit ID e264619a8f252192865dc65e12356c99c18a2cc7
-Grading at Tue Sep 29 16:25:56 EDT 2020
+Grading at Wed Sep 30 14:58:00 EDT 2020
 
 Checking that your code compiles
 rm -f *~ printCountries printRunningAvg printCumulative printDailyMax
@@ -35,7 +35,9 @@ Your program did not indicate a failure case
 Test case 3
 Illegal input: population contains char
 Your program did not indicate a failure case
-                                                         [0/2]
+  Oh no! It printed to stdout instead of stderr
+  It did exit with a failure status though
+                                                         [1.0/2]
 +-----------------------------------------------------------------------+
 Test case 4
 Brazil: 212559409
@@ -54,7 +56,9 @@ Your program did not indicate a failure case
 Test case 5
 Illegal input: population contains char
 Your program did not indicate a failure case
-                                                         [0/1]
+  Oh no! It printed to stdout instead of stderr
+  It did exit with a failure status though
+                                                         [.5/1]
 +-----------------------------------------------------------------------+
 Test case 6
 Your file matched the expected output
@@ -81,7 +85,7 @@ Line_1_did_not_match
 Your file did not match the expected ouput
                                                          [0/1]
 
-Step 1 total                                             [19/30]
+Step 1 total                                             [20.5/30]
 
 =========================================================================
 Step 2
@@ -189,4 +193,4 @@ Quality total                                            [9.6/10]
 
 =========================================================================
 
-Overall Grade: 87
+Overall Grade: 88
