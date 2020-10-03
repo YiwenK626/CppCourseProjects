@@ -11,7 +11,11 @@ kvarray_t * readKVs(const char * fname) {
   //read the lines of the text
   char * line = NULL;
   size_t sz = 0;
-  ssize_t len = 0;
+  ssize_t len = getline(&line, &sz, f);
+  if (len == EOF) {
+    printf("null input file\n");
+    exit(EXIT_FAILURE);
+  }
 
   int count = 0;
   kvarray_t * KVs = malloc(sizeof(*KVs));
