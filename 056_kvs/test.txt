@@ -1,5 +1,5 @@
 apple=red
-=banana=yellow
+banana=yellow
 orange=orange
 grapes=purple
 carrot=orange

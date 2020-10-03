@@ -11,20 +11,21 @@ kvarray_t * readKVs(const char * fname) {
   //read the lines of the text
   char * line = NULL;
   size_t sz = 0;
-  ssize_t len = getline(&line, &sz, f);
-  if (len == EOF) {
-    free(line);
-    fclose(f);
-    exit(EXIT_FAILURE);
-  }
+  ssize_t len = 0;
 
   int count = 0;
   kvarray_t * KVs = malloc(sizeof(*KVs));
   KVs->arr = malloc((count + 1) * sizeof(*KVs->arr));
   char temp[100] = "0";
 
+  int c = fgetc(f);
+  if (c == EOF) {
+    exit(EXIT_FAILURE);
+  }
+
   while (len >= 0) {
     len = getline(&line, &sz, f);
+
     strcpy(temp, line);
 
     KVs->arr = realloc(KVs->arr, (count + 1) * sizeof(*KVs->arr));
