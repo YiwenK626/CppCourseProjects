@@ -22,7 +22,7 @@ kvarray_t * readKVs(const char * fname) {
     len = getline(&line, &sz, f);
 
     if ((count == 0) && len == -1) {
-      exit(EXIT_FAILURE);
+      return NULL;
     }
 
     strcpy(temp, line);
@@ -64,26 +64,36 @@ kvarray_t * readKVs(const char * fname) {
 
 void freeKVs(kvarray_t * pairs) {
   //WRITE ME
-  for (int i = 0; i < (pairs->size); i++) {
-    free(pairs->arr[i].key);
-    free(pairs->arr[i].value);
+  if (pairs != NULL) {
+    for (int i = 0; i < (pairs->size); i++) {
+      free(pairs->arr[i].key);
+      free(pairs->arr[i].value);
+    }
+    free(pairs->arr);
+    free(pairs);
   }
-  free(pairs->arr);
-  free(pairs);
 }
 
 void printKVs(kvarray_t * pairs) {
   //WRITE ME
   // printf("%ld", pairs->size);
-  for (int i = 0; i < pairs->size - 1; i++) {
-    printf("key = '%s' value = '%s'\n", pairs->arr[i].key, pairs->arr[i].value);
+  if (pairs != NULL) {
+    for (int i = 0; i < pairs->size - 1; i++) {
+      printf("key = '%s' value = '%s'\n", pairs->arr[i].key, pairs->arr[i].value);
+    }
   }
 }
+
 char * lookupValue(kvarray_t * pairs, const char * key) {
   //WRITE ME
-  for (int i = 0; i < pairs->size - 1; i++) {
-    if (strcmp(pairs->arr[i].key, key) == 0) {
-      return pairs->arr[i].value;
+  if (pairs == NULL) {
+    return NULL;
+  }
+  else {
+    for (int i = 0; i < pairs->size - 1; i++) {
+      if (strcmp(pairs->arr[i].key, key) == 0) {
+        return pairs->arr[i].value;
+      }
     }
   }
   return NULL;

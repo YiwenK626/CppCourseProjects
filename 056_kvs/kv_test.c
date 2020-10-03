@@ -5,7 +5,7 @@
 
 #define NUM_LOOKUPS 5
 int main(void) {
-  kvarray_t * array = readKVs("test.txt");
+  kvarray_t * array = readKVs("null.txt");
   printf("Printing all keys\n\n");
   printKVs(array);
   char *tests[NUM_LOOKUPS] = {"banana", "grapes", "cantaloupe", "lettuce", "orange"};
