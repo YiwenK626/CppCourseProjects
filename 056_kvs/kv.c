@@ -18,13 +18,12 @@ kvarray_t * readKVs(const char * fname) {
   KVs->arr = malloc((count + 1) * sizeof(*KVs->arr));
   char temp[100] = "0";
 
-  int c = fgetc(f);
-  if (c == EOF) {
-    exit(EXIT_FAILURE);
-  }
-
   while (len >= 0) {
     len = getline(&line, &sz, f);
+
+    if ((count == 0) && len == -1) {
+      exit(EXIT_FAILURE);
+    }
 
     strcpy(temp, line);
 
