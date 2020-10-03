@@ -13,7 +13,8 @@ kvarray_t * readKVs(const char * fname) {
   size_t sz = 0;
   ssize_t len = getline(&line, &sz, f);
   if (len == EOF) {
-    printf("null input file\n");
+    free(line);
+    fclose(f);
     exit(EXIT_FAILURE);
   }
 
