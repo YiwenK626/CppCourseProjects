@@ -22,6 +22,10 @@ kvarray_t * readKVs(const char * fname) {
     len = getline(&line, &sz, f);
 
     if ((count == 0) && len == -1) {
+      free(line);
+      free(KVs->arr);
+      free(KVs);
+      fclose(f);
       return NULL;
     }
 
