@@ -8,7 +8,3 @@ You should write the function
 
 in the outname.c file.  You can make and test with the main function found
 in outname_test.c.  As always, be sure your program valgrinds cleanly.
-
-
-
-
