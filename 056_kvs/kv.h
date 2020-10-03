@@ -1,5 +1,6 @@
 #ifndef __KV_H__
 #define __KV_H__
+#include <stdlib.h>
 
 struct _kvpair_t {
   //DEFINE ME!
@@ -10,7 +11,7 @@ typedef struct _kvpair_t kvpair_t;
 
 struct _kvarray_t {
   //DEFINE ME!
-  int size;
+  size_t size;
   kvpair_t * arr;
 };
 typedef struct _kvarray_t kvarray_t;

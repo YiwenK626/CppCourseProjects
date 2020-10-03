@@ -26,14 +26,17 @@ kvarray_t * readKVs(const char * fname) {
 
     //split them into pairs
     if (strchr(temp, '=') != NULL) {
-      char * key = strtok(temp, "=");
+      char * key;
+      char * value;
+
+      key = strtok(temp, "=");
       KVs->arr[count].key = (char *)malloc(strlen(key) + 1);
       //if (strchr(key, '\n') != NULL) {
       //  *strchr(key, '\n') = '\0';
       //}
       strcpy(KVs->arr[count].key, key);
 
-      char * value = strtok(NULL, "");
+      value = strtok(NULL, "");
       if (value != NULL) {
         *strchr(value, '\n') = '\0';
         KVs->arr[count].value = (char *)malloc(strlen(value) + 1);
@@ -66,13 +69,14 @@ void freeKVs(kvarray_t * pairs) {
 
 void printKVs(kvarray_t * pairs) {
   //WRITE ME
-  for (int i = 0; i < pairs->size; i++) {
+  // printf("%ld", pairs->size);
+  for (int i = 0; i < pairs->size - 1; i++) {
     printf("key = '%s' value = '%s'\n", pairs->arr[i].key, pairs->arr[i].value);
   }
 }
 char * lookupValue(kvarray_t * pairs, const char * key) {
   //WRITE ME
-  for (int i = 0; i < pairs->size; i++) {
+  for (int i = 0; i < pairs->size - 1; i++) {
     if (strcmp(pairs->arr[i].key, key) == 0) {
       return pairs->arr[i].value;
     }
