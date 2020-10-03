@@ -25,22 +25,26 @@ kvarray_t * readKVs(const char * fname) {
     KVs->arr = realloc(KVs->arr, (count + 1) * sizeof(*KVs->arr));
 
     //split them into pairs
-    char * key = strtok(temp, "=");
-    if (key != NULL) {
+    if (strchr(temp, '=') != NULL) {
+      char * key = strtok(temp, "=");
       KVs->arr[count].key = (char *)malloc(strlen(key) + 1);
+      //if (strchr(key, '\n') != NULL) {
+      //  *strchr(key, '\n') = '\0';
+      //}
       strcpy(KVs->arr[count].key, key);
+
+      char * value = strtok(NULL, "");
+      if (value != NULL) {
+        *strchr(value, '\n') = '\0';
+        KVs->arr[count].value = (char *)malloc(strlen(value) + 1);
+        strcpy(KVs->arr[count].value, value);
+      }
+      else {
+        KVs->arr[count].value = NULL;
+      }
+      //add the resulting pairs to an array with realloc
+      count++;
     }
-    else {
-      printf("no = in the inputs");
-      exit(EXIT_FAILURE);
-    }
-    char * value = strtok(NULL, "");
-    char * ptr = strchr(value, '\n');
-    *ptr = '\0';
-    KVs->arr[count].value = (char *)malloc(strlen(value) + 1);
-    strcpy(KVs->arr[count].value, value);
-    //add the resulting pairs to an array with realloc
-    count++;
   }
   //close the file
   fclose(f);
