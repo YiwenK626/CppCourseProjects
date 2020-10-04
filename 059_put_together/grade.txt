@@ -1,6 +1,6 @@
-Grading at 10/04/2020:22:32:42.542926
-For commit ID b27fedec126d320f8e4681630cbddbc9a005dbe3
-Grading at Sun Oct  4 18:32:38 EDT 2020
+Grading at 10/04/2020:22:36:56.831694
+For commit ID c09208c3a79800d4bdb9b8bba9943d11c7ff8593
+Grading at Sun Oct  4 18:36:52 EDT 2020
 Attempting to compile:
 rm -f  outname.o  counts.o  main.o  kv.o count_values *~
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
@@ -10,8 +10,9 @@ gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 kv.c
 gcc -Wall -Werror -std=gnu99 -pedantic -ggdb3 -o count_values  outname.o  counts.o  main.o  kv.o
 #################################################
 testcase1:
-not enough input files
-testcase1 failed, your program didn't indicate this is a failure case
+testcase1 passed, your program successfully indicated a failure
+  - Valgrind was clean (no errors, no memory leaks)
+valgrind was clean
 #################################################
 testcase2:
 Your file matched the expected output
@@ -39,4 +40,4 @@ valgrind was clean
 testcase4:
 valgrind reported memory errors
 
-Overall Grade: D
+Overall Grade: C
