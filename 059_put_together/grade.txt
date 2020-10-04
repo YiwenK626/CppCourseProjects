@@ -1,6 +1,6 @@
-Grading at 10/04/2020:22:22:38.683937
-For commit ID 4323e0114df08ad28b7a9204be4d135099d78c79
-Grading at Sun Oct  4 18:22:35 EDT 2020
+Grading at 10/04/2020:22:32:42.542926
+For commit ID b27fedec126d320f8e4681630cbddbc9a005dbe3
+Grading at Sun Oct  4 18:32:38 EDT 2020
 Attempting to compile:
 rm -f  outname.o  counts.o  main.o  kv.o count_values *~
 gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 outname.c
@@ -10,51 +10,10 @@ gcc -c -Wall -Werror -std=gnu99 -pedantic -ggdb3 kv.c
 gcc -Wall -Werror -std=gnu99 -pedantic -ggdb3 -o count_values  outname.o  counts.o  main.o  kv.o
 #################################################
 testcase1:
-valgrind reported memory errors
+not enough input files
+testcase1 failed, your program didn't indicate this is a failure case
 #################################################
 testcase2:
-apple, red
-avacado, green
-raspberry, (null)
-blueberry, blue
-cherry, red
-eggplant, purple
-grapes, purple
-peach, yellow
-pineapple, yellow
-strawberry, red
-fig, (null)
-kiwi, green
-lime, green
-pineapple, yellow
-pomegranate, red
-raisins, (null)
-apple, red
-blueberry, blue
-carrot, orange
-cherry, red
-dates, brown
-apple, red
-avacado, green
-raspberry, (null)
-blueberry, blue
-cherry, red
-eggplant, purple
-grapes, purple
-peach, yellow
-pineapple, yellow
-strawberry, red
-fig, (null)
-kiwi, green
-lime, green
-pineapple, yellow
-pomegranate, red
-raisins, (null)
-apple, red
-blueberry, blue
-carrot, orange
-cherry, red
-dates, brown
 Your file matched the expected output
 Comparing file list1a.txt.counts with answer
 Your output is correct
@@ -65,48 +24,6 @@ Your output is correct
 valgrind was clean
 #################################################
 testcase3:
-Will Riker, Commander
-Worf, Lt. Commander
-Tasha Yar, Lieutenant
-Guinan, Bartender
-Ro Laren, Ensign
-Jean Luc Picard, Captain
-Q, (null)
-Geordi LaForge, Lt. Commander
-Some guy in a red shirt, (null)
-Reginald Barclay, Lieutenant
-Beverly Crusher, Commander
-Data, Lt. Commander
-Worf, Lt. Commander
-Data, Lt. Commander
-Geordi LaForge, Lt. Commander
-Jean Luc Picard, Captain
-Tasha Yar, Lieutenant
-Ro Laren, Ensign
-Spock, (null)
-James T Kirk, (null)
-Katherine Janeway, (null)
-Will Riker, Commander
-Worf, Lt. Commander
-Tasha Yar, Lieutenant
-Guinan, Bartender
-Ro Laren, Ensign
-Jean Luc Picard, Captain
-Q, (null)
-Geordi LaForge, Lt. Commander
-Some guy in a red shirt, (null)
-Reginald Barclay, Lieutenant
-Beverly Crusher, Commander
-Data, Lt. Commander
-Worf, Lt. Commander
-Data, Lt. Commander
-Geordi LaForge, Lt. Commander
-Jean Luc Picard, Captain
-Tasha Yar, Lieutenant
-Ro Laren, Ensign
-Spock, (null)
-James T Kirk, (null)
-Katherine Janeway, (null)
 Your file matched the expected output
 Comparing file list2a.txt.counts with answer
 Your output is correct
