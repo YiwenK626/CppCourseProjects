@@ -16,7 +16,7 @@ kvarray_t * readKVs(const char * fname) {
   int count = 0;
   kvarray_t * KVs = malloc(sizeof(*KVs));
   KVs->arr = malloc((count + 1) * sizeof(*KVs->arr));
-  char temp[100] = "0";
+  char * temp = malloc(sizeof(*temp));
 
   while (len >= 0) {
     len = getline(&line, &sz, f);
@@ -28,7 +28,7 @@ kvarray_t * readKVs(const char * fname) {
       fclose(f);
       return NULL;
     }
-
+    temp = realloc(temp, strlen(line) + 1);
     strcpy(temp, line);
 
     KVs->arr = realloc(KVs->arr, (count + 1) * sizeof(*KVs->arr));
@@ -60,6 +60,7 @@ kvarray_t * readKVs(const char * fname) {
   }
   //close the file
   fclose(f);
+  free(temp);
   free(line);
 
   KVs->size = count;
