@@ -40,16 +40,20 @@ void addCount(counts_t * c, const char * name) {
 
 void printCounts(counts_t * c, FILE * outFile) {
   //WRITE ME
-  for (int i = 0; i < c->size; i++) {
-    fprintf(outFile, "%s: %d\n", c->array[i].string, c->array[i].count);
+  if (c->size > 0) {
+    for (int i = 0; i < c->size; i++) {
+      fprintf(outFile, "%s: %d\n", c->array[i].string, c->array[i].count);
+    }
   }
   fprintf(outFile, "<unknown>: %ld\n", c->un_size);
 }
 
 void freeCounts(counts_t * c) {
   //WRITE ME
-  for (int i = 0; i < c->size; i++) {
-    free(c->array[i].string);
+  if (c->size > 0) {
+    for (int i = 0; i < c->size; i++) {
+      free(c->array[i].string);
+    }
   }
   free(c->array);
   free(c);
