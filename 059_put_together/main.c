@@ -15,11 +15,12 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
   ssize_t len = 0;
   int count = 0;
   char ** list = malloc(count * sizeof(*list));
-  char temp[30] = "";
+  char * temp = malloc(sizeof(*temp));
 
   while (len >= 0) {
     len = getline(&line, &sz, f);
     if (len != EOF) {
+      temp = realloc(temp, strlen(line));
       strncpy(temp, line, strlen(line));
       temp[strlen(line) - 1] = '\0';
       char * value = lookupValue(kvPairs, temp);
@@ -36,6 +37,7 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
       }
     }
   }
+  free(temp);
   free(line);
   //free(temp);
   counts_t * c = createCounts();
@@ -50,7 +52,7 @@ counts_t * countFile(const char * filename, kvarray_t * kvPairs) {
 int main(int argc, char ** argv) {
   //WRITE ME (plus add appropriate error checking!)
   if (argc < 3) {
-    printf("not enough input files\n");
+    fprintf(stderr, "not enough input files\n");
     exit(EXIT_FAILURE);
   }
   //read the key/value pairs from the file named by argv[1] (call the result kv)
