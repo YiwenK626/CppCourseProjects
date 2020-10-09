@@ -1,0 +1,13 @@
+Grading at 10/09/2020:02:44:00.387927
+For commit ID 2e667aa3cbb20d6485a33c94863554c6f1a0702a
+Grading at Thu Oct  8 22:44:00 EDT 2020
+Attempting to compile:
+g++ -c -ggdb3 -Werror -Wall -std=gnu++98 -pedantic code.cpp
+g++ -o code code.o
+Line_1_did_not_match
+Line_2_did_not_match
+Line_3_did_not_match
+Your file did not match the expected ouput
+Your output did not match what we expected.
+
+Overall Grade: FAILED
