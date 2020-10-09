@@ -11,6 +11,8 @@ void Point::move(double dx, double dy) {
 
 double Point::distanceFrom(const Point & p) {
   double dis;
-  dis = std::sqrt(p.x * p.x + p.y * p.y);
+  double X = p.x - x;
+  double Y = p.y - y;
+  dis = std::sqrt(X * X + Y * Y);
   return dis;
 }
