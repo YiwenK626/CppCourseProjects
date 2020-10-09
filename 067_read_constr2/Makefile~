@@ -1,0 +1,4 @@
+code: code.o
+	g++ -g -o code.o
+code.o: code.c code.h
+	g++ -g -o -Werror -Wall -std=gnu++98 -pedantic code.cpp code.h
