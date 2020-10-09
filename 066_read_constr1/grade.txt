@@ -1,0 +1,15 @@
+Grading at 10/09/2020:02:19:29.439944
+For commit ID 92b4004452c3aed557c77ea4e7db2035ed67cb64
+Grading at Thu Oct  8 22:19:29 EDT 2020
+Attempting to compile:
+g++ -g -c -Wall -Werror -std=gnu++98 -pedantic -ggdb3  code.cpp
+g++ -o code code.o
+Your Makefile produced a binary called 'code'
+Line_13_did_not_match
+Line_14_did_not_match
+Line_15_did_not_match
+Line_16_did_not_match
+Your file did not match the expected ouput
+Your output did not match what we expected.
+
+Overall Grade: FAILED
