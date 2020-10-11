@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "rand_story.h"
+
+int main(int argc, char ** argv) {
+  if (argc != 2) {
+    fprintf(stderr, "incorrect number of arguments\n");
+    exit(EXIT_FAILURE);
+  }
+  FILE * f = fopen(argv[1], "r");
+
+  char * line = NULL;
+  size_t size = 0;
+  ssize_t len = 0;
+  char * ptr;
+  char * temp = malloc(sizeof(*temp));
+
+  while (len >= 0) {
+    len = getline(&line, &size, f);
+    //check how many and if even underscores
+    //countDLT()
+    if (len != EOF) {
+      int i = 0;
+      temp = realloc(temp, strlen(line) + 1);
+      strcpy(temp, line);
+      //temp[strlen(line) + 1] = '\0';
+      ptr = strtok(temp, "_");
+
+      if (temp[0] != '_') {
+        i++;
+        printf("%s", ptr);
+      }
+      else {
+        printCat(ptr);
+        i += 2;
+      }
+
+      ptr = strtok(NULL, "_");
+
+      while (ptr != NULL) {
+        if (i % 2 != 0) {
+          printCat(ptr);
+          i++;
+        }
+        else {
+          printf("%s", ptr);
+          i++;
+        }
+        ptr = strtok(NULL, "_");
+      }
+    }
+  }
+  free(line);
+}

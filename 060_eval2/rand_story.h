@@ -4,5 +4,12 @@
 #include "provided.h"
 
 //any functions you want your main to use
+const char * chooseWords(char * category, catarray_t * cats);
+
+void printWords(catarray_t * cats);
+
+void printCat(char * ptr);
+
+void countDLT(char * line, char DLT, ssize_t len);
 
 #endif
