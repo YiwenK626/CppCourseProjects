@@ -1,0 +1,13 @@
+Grading at 10/14/2020:16:04:41.076682
+For commit ID 7022a62cd729a1a4e319461220ddc416c741d97a
+Grading at Wed Oct 14 12:04:40 EDT 2020
+Doing some basic sanity checking for your submission
+
+Step 1
+Checking that story-step1 compiles
+rm -f *~ story-step1 story-step2 story-step3 story-step4 story-step1.o story-step2.o story-step3.o story-step4.o rand_story.o
+cc -std=gnu99 -pedantic -Wall -Werror -ggdb3    story-step1.c   -o story-step1
+<builtin>: recipe for target 'story-step1' failed
+The code did not compile!
+
+Overall Grade: NO GRADE YET
