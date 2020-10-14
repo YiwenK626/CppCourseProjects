@@ -22,7 +22,7 @@ int main(int argc, char ** argv) {
     getStory(1, argv);
   }
 }
-void getStory(int option, char ** filename) {
+void getStory(int option, char ** filename) {  // similar process as main() of step 3
   FILE * lib = fopen(filename[option + 1], "r");
   FILE * template = fopen(filename[option + 2], "r");
   if (lib == NULL || template == NULL) {

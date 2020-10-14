@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// printCat prints the chose word with cat name as the key
+// printCat prints and returns the chosen word with cat name as the key
 char * printCat(char * ptr, catarray_t * cats, int option, category_t * usedWords) {
   const char * trial = chooseWord(ptr, cats);
   if (trial == NULL) {
@@ -13,7 +13,8 @@ char * printCat(char * ptr, catarray_t * cats, int option, category_t * usedWord
     exit(EXIT_FAILURE);
   }
   while (option == 1 && checkReuse(trial, usedWords) == 1) {
-    trial = chooseWord(ptr, cats);
+    trial =
+        chooseWord(ptr, cats);  // rechoose the word if it has been used under option -n
   }
   char * target = malloc(sizeof(*target));
   target = realloc(target, strlen(trial) + 1);
@@ -54,6 +55,7 @@ size_t firstEntry(size_t n, catarray_t * cats, char * cat, char * word) {
   return n;
 }
 
+// freeCatArr frees catarray
 void freeCatArr(catarray_t * cats, size_t n) {
   for (int i = 0; i < n; i++) {
     freeCat(cats->arr[i], cats->arr[i].n_words);
@@ -62,6 +64,7 @@ void freeCatArr(catarray_t * cats, size_t n) {
   free(cats);
 }
 
+//free Cat frees category
 void freeCat(category_t arr, size_t n) {
   free(arr.name);
   for (int j = 0; j < n; j++) {
@@ -70,6 +73,7 @@ void freeCat(category_t arr, size_t n) {
   free(arr.words);
 }
 
+//storeCate keeps records of words used in usedWords
 void storeCat(char * target, category_t * used) {
   used->n_words++;
   used->words = realloc(used->words, used->n_words * sizeof(*used->words));
@@ -77,6 +81,7 @@ void storeCat(char * target, category_t * used) {
   strcpy(used->words[used->n_words - 1], target);
 }
 
+// createCats creates a library for cat:word references
 void creatCats(FILE * f, catarray_t * cats) {
   char * line = NULL;
   size_t size = 0;
@@ -103,7 +108,6 @@ void creatCats(FILE * f, catarray_t * cats) {
     word[strlen(word) - 1] = '\0';
 
     // store into catarray
-
     if (n == 0) {
       n = firstEntry(n, cats, cat, word);
     }
@@ -137,6 +141,7 @@ void creatCats(FILE * f, catarray_t * cats) {
   fclose(f);
 }
 
+// parseTemp readst the word template and subtitutes blanks
 void parseTemp(FILE * f, catarray_t * cats, int option) {
   // parse template
   char * line = NULL;
@@ -209,6 +214,7 @@ void parseTemp(FILE * f, catarray_t * cats, int option) {
   fclose(f);
 }
 
+//checkReuse finds if the word has been used or not
 int checkReuse(const char * target, category_t * usedWords) {
   for (int i = 0; i < usedWords->n_words; i++) {
     if (strcmp(target, usedWords->words[i]) == 0) {

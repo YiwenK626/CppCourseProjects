@@ -23,7 +23,7 @@ int main(int argc, char ** argv) {
   while (len >= 0) {
     len = getline(&line, &sz, f);
     if (strchr(line, ':') == NULL) {
-      fprintf(stderr, "invalid input format for step2\n");
+      fprintf(stderr, "invalid input format for category library\n");
       exit(EXIT_FAILURE);
     }
 
@@ -52,7 +52,6 @@ int main(int argc, char ** argv) {
           }
           if (sign == 1) {
             T->n_words++;  // add to words array if not exist
-                           //cpyWord(T->words, word, T->n_words);
             T->words = realloc(T->words, T->n_words * sizeof(*T->words));
             T->words[T->n_words - 1] = malloc(strlen(word) + 1);
             strcpy(T->words[T->n_words - 1], word);

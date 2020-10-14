@@ -27,7 +27,7 @@ int main(int argc, char ** argv) {
     len = getline(&line, &size, f);
 
     if (len != EOF) {
-      // check if delimiters are paris
+      // check if delimiters are pairs
       countDLT(line, '_', len);
 
       temp = realloc(temp, strlen(line) + 1);
@@ -35,7 +35,7 @@ int main(int argc, char ** argv) {
       ptr = strtok(temp, "_");  // segment sentences into parts by "_"
 
       // text and blanks show by turns
-      // execute based on parity of i
+      // execute based on parity of int i
       int i = 0;
       if (temp[0] == '_') {
         i++;

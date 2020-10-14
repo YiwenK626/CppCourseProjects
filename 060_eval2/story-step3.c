@@ -11,7 +11,7 @@ int main(int argc, char ** argv) {
     exit(EXIT_FAILURE);
   }
 
-  FILE * lib = fopen(argv[1], "r");
+  FILE * lib = fopen(argv[1], "r");  // import files for car libraty and story template
   FILE * template = fopen(argv[2], "r");
   if (lib == NULL || template == NULL) {
     perror("NULL input");
@@ -19,8 +19,8 @@ int main(int argc, char ** argv) {
   }
 
   catarray_t * cats = malloc(sizeof(*cats));
-  creatCats(lib, cats);
-  parseTemp(template, cats, 0);
-  freeCatArr(cats, cats->n);
+  creatCats(lib, cats);          //create a catearray
+  parseTemp(template, cats, 0);  //parse the template
+  freeCatArr(cats, cats->n);     // free the catearray created
   return 0;
 }

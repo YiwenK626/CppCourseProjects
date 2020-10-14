@@ -5,7 +5,6 @@
 
 #include "provided.h"
 
-//any functions you want your main to use
 const char * chooseWords(char * category, catarray_t * cats);
 
 void printWords(catarray_t * cats);
