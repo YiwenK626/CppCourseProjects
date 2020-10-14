@@ -43,7 +43,7 @@ int main(int argc, char ** argv) {
 
       while (ptr != NULL) {
         if (i % 2 != 0) {  // printout return value from chooseWord for blanks
-          char * target = printCat(ptr, NULL);
+          char * target = printCat(ptr, NULL, 0, NULL);
           free(target);
           i++;
         }
