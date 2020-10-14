@@ -1,80 +1,28 @@
-#include "rand_story.h"
-
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// printCat prints the chose word with cat name as the key
-char * printCat(char * ptr, catarray_t * cats, int option, category_t * usedWords) {
-  const char * trial = chooseWord(ptr, cats);
-  if (trial == NULL) {
-    fprintf(stderr, "invalid category names\n");
+#include "rand_story.h"
+
+int main(int argc, char ** argv) {
+  if (argc != 3) {
+    fprintf(stderr, "invalid number of inputs for step3\n");
     exit(EXIT_FAILURE);
   }
-  while (option == 1 && checkReuse(trial, usedWords) == 1) {
-    trial = chooseWord(ptr, cats);
-  }
-  char * target = malloc(sizeof(*target));
-  target = realloc(target, strlen(trial) + 1);
-  strcpy(target, trial);
-  printf("%s", target);
-  return target;
-}
 
-// countDLT counts number of delimiters to check if format is legal
-void countDLT(char * line, char DLT, ssize_t len) {
-  int count = 0;
-  for (int i = 0; i < len; i++) {
-    if (line[0] == DLT) {
-      count++;
-    }
-  }
-  if (count % 2 != 0) {
-    fprintf(stderr, "uneven number of underscores!\n");
+  FILE * lib = fopen(argv[1], "r");
+  FILE * template = fopen(argv[2], "r");
+  if (lib == NULL || template == NULL) {
+    perror("NULL input");
     exit(EXIT_FAILURE);
   }
-}
 
-// firstEntry enters new categories to catarrays and update its size
-size_t firstEntry(size_t n, catarray_t * cats, char * cat, char * word) {
-  n++;
-  cats->arr = realloc(cats->arr, n * sizeof(*cats->arr));
-
-  //name
-  cats->arr[n - 1].name = malloc(strlen(cat) + 1);
-  strcpy(cats->arr[n - 1].name, cat);
-  //n_words
-  cats->arr[n - 1].n_words = 1;
-  //words
-  cats->arr[n - 1].words = malloc(sizeof(*(cats->arr[n - 1].words)));
-  cats->arr[n - 1].words[0] = malloc(strlen(word) + 1);
-  strcpy(cats->arr[n - 1].words[0], word);
-
-  return n;
-}
-
-void freeCatArr(catarray_t * cats, size_t n) {
-  for (int i = 0; i < n; i++) {
-    freeCat(cats->arr[i], cats->arr[i].n_words);
-  }
-  free(cats->arr);
-  free(cats);
-}
-
-void freeCat(category_t arr, size_t n) {
-  free(arr.name);
-  for (int j = 0; j < n; j++) {
-    free(arr.words[j]);
-  }
-  free(arr.words);
-}
-
-void storeCat(char * target, category_t * used) {
-  used->n_words++;
-  used->words = realloc(used->words, used->n_words * sizeof(*used->words));
-  used->words[used->n_words - 1] = malloc(strlen(target) + 1);
-  strcpy(used->words[used->n_words - 1], target);
+  catarray_t * cats = malloc(sizeof(*cats));
+  creatCats(lib, cats);
+  parseTemp(template, cats);
+  freeCatArr(cats, cats->n);
+  return 0;
 }
 
 void creatCats(FILE * f, catarray_t * cats) {
@@ -90,7 +38,7 @@ void creatCats(FILE * f, catarray_t * cats) {
   while (len != EOF) {
     len = getline(&line, &size, f);
     if (strchr(line, ':') == NULL) {
-      fprintf(stderr, "invalid input format for cats\n");
+      fprintf(stderr, "invalid input format for step2\n");
       exit(EXIT_FAILURE);
     }
 
@@ -103,7 +51,6 @@ void creatCats(FILE * f, catarray_t * cats) {
     word[strlen(word) - 1] = '\0';
 
     // store into catarray
-
     if (n == 0) {
       n = firstEntry(n, cats, cat, word);
     }
@@ -132,12 +79,13 @@ void creatCats(FILE * f, catarray_t * cats) {
     }
   }
   cats->n = n;
+  //printWords(cats);
   free(temp);
   free(line);
   fclose(f);
 }
 
-void parseTemp(FILE * f, catarray_t * cats, int option) {
+void parseTemp(FILE * f, catarray_t * cats) {
   // parse template
   char * line = NULL;
   size_t size = 0;
@@ -150,6 +98,8 @@ void parseTemp(FILE * f, catarray_t * cats, int option) {
   strcpy(usedWords->name, "usedWords");
   usedWords->n_words = 0;
   usedWords->words = malloc(sizeof(*usedWords->words));
+
+  //char * target = malloc(sizeof(*target));
 
   while (len >= 0) {
     len = getline(&line, &size, f);
@@ -176,12 +126,13 @@ void parseTemp(FILE * f, catarray_t * cats, int option) {
         else {
           // if cat, get word
           if (isdigit(*ptr) == 0) {
-            char * target = printCat(ptr, cats, option, usedWords);
+            char * target = printCat(ptr, cats);
             storeCat(target, usedWords);
             free(target);
           }
           // if numbers, get record
           else {
+            //GET A PREVIOUSE ONE
             if (atoi(ptr) < 1) {
               fprintf(stderr, "fail to track back previous words with negative values\n");
               exit(EXIT_FAILURE);
@@ -207,13 +158,4 @@ void parseTemp(FILE * f, catarray_t * cats, int option) {
   freeCat(*usedWords, usedWords->n_words);
   free(usedWords);
   fclose(f);
-}
-
-int checkReuse(const char * target, category_t * usedWords) {
-  for (int i = 0; i < usedWords->n_words; i++) {
-    if (strcmp(target, usedWords->words[i]) == 0) {
-      return 1;
-    }
-  }
-  return 0;
 }
