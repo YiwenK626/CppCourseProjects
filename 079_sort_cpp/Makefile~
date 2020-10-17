@@ -1,0 +1,5 @@
+CCFLAGS = --std=gnu98++ -pedantic -Wall -Werror -gdb33
+sortLines:sortLines.o
+	g++ -o sortLines $(CCFLAGS) sortLines.o
+sortLines.o : sortLines.cpp
+	g++ -c sortLines.cpp $(CCFLAGS) 

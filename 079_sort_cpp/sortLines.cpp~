@@ -1,0 +1,46 @@
+#include <algorithm>
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>;
+#include <iostream>
+#include <string>
+#include <vector>
+
+void printVector(std::vector<std::string> v) {
+  for (auto it = std::cbegin(v); it != std::cend(v); it++) {
+    std::cout << *it;
+  }
+}
+
+int main(int argc, char ** argv) {
+  if (argc == 1) {
+    std::string line = " ";
+    std::vector<std::string> strV;
+
+    while (line != "\n") {
+      std::getline(std::cin, line);
+      strV.push_back(line);
+    }
+    std::sort(strV.begin(), strV.end());
+    printVector(strV);
+  }
+
+  if (argc > 1) {
+    for (int i = 1; i < argc; i++) {
+      std::ifstream fname;
+      fname.open(argv[i]);
+
+      std::string line;
+      std::vector<std::string> strV;
+      while (!fname.eof()) {
+        std::getline(fname, line);
+        strV.push_back(line);
+      }
+      std::sort(strV.begin(), strV.end());
+      printVector(strV);
+      fname.close();
+    }
+  }
+
+  return 0;
+}
