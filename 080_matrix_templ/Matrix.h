@@ -16,7 +16,7 @@ class Matrix {
   std::vector<T> ** rows;
 
  public:
-  Matrix() : numRows(0), numColumns(0) {}
+  Matrix() : numRows(0), numColumns(0), rows() {}
   Matrix(int r, int c) : numRows(r), numColumns(c) {
     rows = new std::vector<T> *[r]();
     for (int n = 0; n < r; n++) {
