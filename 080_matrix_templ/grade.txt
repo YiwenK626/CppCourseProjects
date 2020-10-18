@@ -1,24 +1,27 @@
-Grading at 10/18/2020:02:01:32.001020
-For commit ID e36ab15f5e8e82a307a5e09a7ec78d4a328efe18
-Grading at Sat Oct 17 22:01:25 EDT 2020
+Grading at 10/18/2020:02:21:08.771903
+For commit ID 9605d0c128beb900f47725a730f3650d437d347f
+Grading at Sat Oct 17 22:21:02 EDT 2020
 -----------------------------------------------
 testcase 1 : Testing with Matrix<int>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 2 : Testing with Matrix<std::string>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 -----------------------------------------------
 testcase 3 : Testing with Matrix<(a custom class we wrote)>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed 
 --------------------------------------------
 Preparing to test assert fails...
 Compiling assertion failure tester...
@@ -35,11 +38,13 @@ Your file matched the expected output
 Testcase passed
 -----------------------------------------------
 testcase 6 :  operator+: different number of rows
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed
 -----------------------------------------------
 testcase 7 :  operator+: different number of columns
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
+  - Valgrind was clean (no errors, no memory leaks)
+Your file matched the expected output
+Testcase passed
 
-Overall Grade: F
+Overall Grade: A
