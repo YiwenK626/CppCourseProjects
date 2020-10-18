@@ -18,13 +18,13 @@ class Matrix {
  public:
   Matrix() : numRows(0), numColumns(0) {}
   Matrix(int r, int c) : numRows(r), numColumns(c) {
-    rows = new std::vector<T> *[r];
+    rows = new std::vector<T> *[r]();
     for (int n = 0; n < r; n++) {
       rows[n] = new std::vector<T>(c);
     }
   }
   Matrix(const Matrix & rhs) : numRows(rhs.numRows), numColumns(rhs.numColumns) {
-    rows = new std::vector<T> *[rhs.numRows];
+    rows = new std::vector<T> *[rhs.numRows]();
     for (int n = 0; n < rhs.numRows; n++) {
       rows[n] = new std::vector<T>(numColumns);
     }
