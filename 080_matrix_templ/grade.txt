@@ -1,23 +1,23 @@
-Grading at 10/18/2020:01:53:18.686262
-For commit ID 1af4067162aaddafa07c91545ff743d80ab96082
-Grading at Sat Oct 17 21:53:12 EDT 2020
+Grading at 10/18/2020:01:58:15.292959
+For commit ID 7e87eb299f12b569dabc6923c8c3ac2e337dc08f
+Grading at Sat Oct 17 21:58:08 EDT 2020
 -----------------------------------------------
 testcase 1 : Testing with Matrix<int>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
+  - Valgrind showed memory leaks
 Valgrind reported errors (test failed).
 -----------------------------------------------
 testcase 2 : Testing with Matrix<std::string>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
+  - Valgrind showed memory leaks
 Valgrind reported errors (test failed).
 -----------------------------------------------
 testcase 3 : Testing with Matrix<(a custom class we wrote)>
 ...compiling...
 The code compiled.
-  - Valgrind reported errors
+  - Valgrind showed memory leaks
 Valgrind reported errors (test failed).
 --------------------------------------------
 Preparing to test assert fails...
@@ -25,9 +25,8 @@ Compiling assertion failure tester...
 Compiled.
 -----------------------------------------------
 testcase 4 :  operator[]: row number too high
-  - Valgrind was clean (no errors, no memory leaks)
-Your file matched the expected output
-Testcase passed
+  - Valgrind reported errors
+Valgrind reported errors (test failed).
 -----------------------------------------------
 testcase 5 :  operator[]: row number too low
   - Valgrind reported errors
