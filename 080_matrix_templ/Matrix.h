@@ -61,7 +61,7 @@ class Matrix {
   }
   std::vector<T> & operator[](int index) {
     assert(index < numRows);
-    assert(index > 0);
+    assert(index >= 0);
     return *rows[index];
   }
 
