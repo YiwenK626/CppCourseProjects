@@ -56,10 +56,12 @@ class Matrix {
   int getColumns() const { return numColumns; }
   const std::vector<T> & operator[](int index) const {
     assert(index < numRows);
+    assert(index >= 0);
     return *rows[index];
   }
   std::vector<T> & operator[](int index) {
     assert(index < numRows);
+    assert(index > 0);
     return *rows[index];
   }
 
@@ -80,7 +82,8 @@ class Matrix {
   }
 
   Matrix operator+(const Matrix & rhs) const {
-    assert(numColumns == rhs.numColumns && numRows == rhs.numRows);
+    assert(this->numColumns == rhs.numColumns);
+    assert(this->numRows == rhs.numRows);
     for (int i = 0; i < numRows; i++) {
       assert(rows[i]->size() == rhs.rows[i]->size());
     }
