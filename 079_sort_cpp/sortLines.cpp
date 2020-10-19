@@ -33,7 +33,7 @@ int main(int argc, char ** argv) {
       std::ifstream fname;
       fname.open(argv[i]);
       if (!fname) {
-        std::cout << "fail to open " << argv[i] << std::endl;
+        std::cerr << "fail to open " << argv[i] << std::endl;
         exit(EXIT_FAILURE);
       }
 
@@ -41,7 +41,7 @@ int main(int argc, char ** argv) {
       std::vector<std::string> strV;
       std::getline(fname, line);
       if (fname.eof()) {
-        std::cout << "blank input file " << argv[i] << std::endl;
+        std::cerr << "blank input file " << argv[i] << std::endl;
         exit(EXIT_FAILURE);
       }
 
