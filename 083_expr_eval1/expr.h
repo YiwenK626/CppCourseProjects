@@ -31,12 +31,11 @@ class PlusExpression : public Expression {
  public:
   PlusExpression(Expression * lhs, Expression * rhs) : lhs(lhs), rhs(rhs) {}
   virtual std::string toString() const {
-    std::stringstream str;
-    str << "(" << lhs->toString() << " + " << rhs->toString() << ")" << std::endl;
+    std::ostringstream str;
 
-    std::string expr;
-    str >> expr;
-    return expr;
+    str << "(" << lhs->toString() << " + " << rhs->toString() << ")";
+
+    return str.str();
   }
   virtual ~PlusExpression(){};
 };
