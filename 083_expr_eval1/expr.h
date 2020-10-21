@@ -5,7 +5,7 @@
 class Expression {
  public:
   virtual std::string toString() const = 0;
-  virtual ~Expression(){};
+  virtual ~Expression() {}
 };
 
 class NumExpression : public Expression {
@@ -21,7 +21,8 @@ class NumExpression : public Expression {
     str >> expr;
     return expr;
   }
-  virtual ~NumExpression(){};
+  virtual ~NumExpression() {  //delete Num;
+  }
 };
 
 class PlusExpression : public Expression {
@@ -37,5 +38,8 @@ class PlusExpression : public Expression {
 
     return str.str();
   }
-  virtual ~PlusExpression(){};
+  virtual ~PlusExpression() {
+    delete lhs;
+    delete rhs;
+  }
 };
