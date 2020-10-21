@@ -1,0 +1,19 @@
+#define __EXPR_H__
+
+#include <iostream>
+class Expression {
+ public:
+  virtual std::string toString() const = 0;
+};
+
+class NumExpression : public Expression {
+ public:
+  NumExpression(long num) {}
+  virtual std::string toString() const {}
+};
+
+class PlusExpression : public Expression {
+ public:
+  PlusExpression(Expression * lhs, Expression * rhs);
+  virtual std::string toString() const;
+};
