@@ -1,0 +1,31 @@
+#include <cassert>
+#include <cstdio>
+#include <cstdlib>
+#include <exception>
+
+#include "il.h"
+
+void testList(void) {
+}
+
+int main() {
+  IntList il1;
+  IntList il2;
+  //assert(il1.head->data == 0);
+  if (il1.getSize() != 0) {
+    exit(EXIT_FAILURE);
+  }
+  for (int i = 0; i < 5; i++) {
+    il2.addFront(i * i);
+    il2.addBack(2 * i);
+  }
+  //size = 10
+  if (il2[0] != 16 || il2[9] != 8) {
+    exit(EXIT_FAILURE);
+  }
+  il2.remove(4);
+  if (il2.find(4) != 0) {
+    exit(EXIT_FAILURE);
+  }
+  IntList il3(il2);
+}
