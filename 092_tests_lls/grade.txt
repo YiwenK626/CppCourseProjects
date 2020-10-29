@@ -1,0 +1,78 @@
+Grading at 10/29/2020:15:33:56.299642
+For commit ID 0e67ac1180871d19438e8fb67b06d1a141c00e38
+Grading at Thu Oct 29 11:33:38 EDT 2020
+**Testing correct implementation **
+-----------------------------------
+  - Valgrind was clean (no errors, no memory leaks)
+
+**Testing broken implementation 10**
+-----------------------------------
+
+**Testing broken implementation 11**
+-----------------------------------
+
+**Testing broken implementation 12**
+-----------------------------------
+  - Valgrind reported errors
+
+**Testing broken implementation 13**
+-----------------------------------
+
+**Testing broken implementation 14**
+-----------------------------------
+  - Valgrind reported errors
+
+**Testing broken implementation 15**
+-----------------------------------
+
+**Testing broken implementation 16**
+-----------------------------------
+
+**Testing broken implementation 17**
+-----------------------------------
+
+**Testing broken implementation 18**
+-----------------------------------
+  - Valgrind reported errors
+
+**Testing broken implementation 19**
+-----------------------------------
+  - Valgrind reported errors
+
+**Testing broken implementation 1**
+-----------------------------------
+
+**Testing broken implementation 20**
+-----------------------------------
+
+**Testing broken implementation 21**
+-----------------------------------
+  - Valgrind reported errors
+
+**Testing broken implementation 2**
+-----------------------------------
+
+**Testing broken implementation 3**
+-----------------------------------
+
+**Testing broken implementation 4**
+-----------------------------------
+
+**Testing broken implementation 5**
+-----------------------------------
+
+**Testing broken implementation 6**
+-----------------------------------
+
+**Testing broken implementation 7**
+-----------------------------------
+
+**Testing broken implementation 8**
+-----------------------------------
+
+**Testing broken implementation 9**
+-----------------------------------
+
+Your tests identified the problems with all broken programs
+
+Overall Grade: PASSED
