@@ -42,6 +42,7 @@ class Page {
       cout << " " << i + 1 << ". " << choices[i].act << "\n";
     }
   }
+  int pWL(void) { return ans; }
 };
 
 void pPrompt(void);
