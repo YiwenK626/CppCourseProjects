@@ -1,16 +1,13 @@
-Grading at 10/31/2020:21:41:16.774866
-For commit ID d5bb4876d9a9ab80cc3d5b4da02dafa19dea7846
-Grading at Sat Oct 31 17:41:16 EDT 2020
+Grading at 10/31/2020:21:50:17.270359
+For commit ID e25b1af6d37124d7dec06a091e83e3edb0b75a10
+Grading at Sat Oct 31 17:50:17 EDT 2020
 Doing some basic sanity checking for your submission
 
 Step 1
 Checking that cyoa-step1 compiles
 make: 'cyoa-step1' is up to date.
 Testing ./cyoa-step1 story1/page1.txt 
-Line_22_did_not_match
-Line_23_did_not_match
-Line_24_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Testing ./cyoa-step1 story1/page8.txt 
 Line_27_did_not_match
 Line_28_did_not_match
