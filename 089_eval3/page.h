@@ -39,7 +39,7 @@ class Page {
   }
   void pChoices(void) {
     for (unsigned long i = 0; i < choices.size(); i++) {
-      cout << choices[i].act << "\n";
+      cout << " " << i + 1 << ". " << choices[i].act << "\n";
     }
   }
 };
