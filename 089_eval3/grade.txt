@@ -1,6 +1,6 @@
-Grading at 10/31/2020:21:50:17.270359
-For commit ID e25b1af6d37124d7dec06a091e83e3edb0b75a10
-Grading at Sat Oct 31 17:50:17 EDT 2020
+Grading at 10/31/2020:21:57:37.581559
+For commit ID 9b12d2c5af5b946717e022cabf4f76bc8e30c918
+Grading at Sat Oct 31 17:57:37 EDT 2020
 Doing some basic sanity checking for your submission
 
 Step 1
@@ -9,13 +9,9 @@ make: 'cyoa-step1' is up to date.
 Testing ./cyoa-step1 story1/page1.txt 
 Your file matched the expected output
 Testing ./cyoa-step1 story1/page8.txt 
-Line_27_did_not_match
-Line_28_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Testing ./cyoa-step1 story1/page11.txt 
-Line_30_did_not_match
-Line_31_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 
 Step 2
 Checking that cyoa-step2 compiles
@@ -29,7 +25,7 @@ Step 4
 Checking that cyoa-step4 compiles
 The code did not compile!
 
-Step 1: FAILED
+Step 1: PASSED
 Step 2: FAILED
 Step 3: FAILED
 Step 4: FAILED
