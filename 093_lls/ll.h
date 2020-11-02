@@ -19,13 +19,16 @@ class LinkedList {
     Node(const T & item, Node * next, Node * prev) : data(item), next(next), prev(prev){};
   };
   Node * rmN(const T & data, Node * current) {
-    if (current == NULL) {
+    if (current == NULL) {  // when there is no sublist
       return NULL;
     }
-    if (data == current->data) {
+    if (data == current->data) {  // when head is key
       Node * ans = current->next;
       if (ans != NULL) {
         ans->prev = current->prev;
+      }
+      else {
+        tail = current->prev;
       }
 
       delete current;
@@ -42,55 +45,35 @@ class LinkedList {
  public:
   LinkedList() : head(NULL), tail(NULL){};
   LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL) {
-    Node ** list = new Node *[rhs.getSize()];
-    head = list[0];
-    tail = list[rhs.getSize()];
-
-    for (int i = 0; i < rhs.getSize(); i++) {
-      list[i]->data = rhs[i];
-      if (i == rhs.getSize() - 1) {
-        list[i]->next = NULL;
-      }
-      else {
-        list[i]->next = list[i + 1];
-      }
-      if (i == 0) {
-        list[i]->prev = NULL;
-      }
-      else {
-        list[i]->prev = list[i - 1];
-      }
+    Node * temp = rhs.tail;
+    while (temp != NULL) {
+      this->addFront(temp->data);
+      temp = temp->prev;
     }
   }
-  LinkedList & operator=(const LinkedList & rhs) {
-    Node ** list = new Node *[rhs.getSize()];
-    LinkedList * ans = new LinkedList;
-    ans->head = list[0];
-    ans->tail = list[rhs.getSize()];
-
-    for (int i = 0; i < rhs.getSize(); i++) {
-      list[i]->data = rhs[i];
-      if (i == rhs.getSize() - 1) {
-        list[i]->next = NULL;
+  LinkedList<T> & operator=(const LinkedList<T> & rhs) {
+    if (this != &rhs) {
+      while (head != NULL) {
+        Node * temp = head->next;
+        delete head;
+        head = temp;
       }
-      else {
-        list[i]->next = list[i + 1];
-      }
-      if (i == 0) {
-        list[i]->prev = NULL;
-      }
-      else {
-        list[i]->prev = list[i - 1];
+      tail = NULL;
+      Node * current = rhs.tail;
+      while (current != NULL) {
+        this->addFront(current->data);
+        current = current->prev;
       }
     }
-    return *ans;
+    return *this;
   }
   ~LinkedList() {
     while (head != NULL) {
+      Node * temp = head->next;
       delete head;
-      head = head->next;
+      head = temp;
     }
-    delete tail;
+    tail = NULL;
   };
   void addFront(const T & item) {
     head = new Node(item, head, NULL);
@@ -111,12 +94,13 @@ class LinkedList {
     }
   }
   bool remove(const T & item) {
+    LinkedList temp = *this;
     head = rmN(item, head);
-    if (head->next == NULL) {
-      return 0;
+    if (temp.getSize() == getSize()) {
+      return false;
     }
     else {
-      return 1;
+      return true;
     }
   }
   T & operator[](int index) {
@@ -131,6 +115,10 @@ class LinkedList {
     return temp->data;
   }
   const T & operator[](int index) const {
+    if (index < 0 || index >= getSize()) {
+      exit(EXIT_FAILURE);
+    }
+
     int t = 0;
     Node * temp = head;
     while (t < index) {
@@ -161,7 +149,7 @@ class LinkedList {
       return 0;
     }
     Node * temp = head;
-    int i = 0;
+    int i = 1;
     while (temp->next != NULL) {
       temp = temp->next;
       i++;
