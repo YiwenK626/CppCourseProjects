@@ -46,20 +46,20 @@ class LinkedList {
   LinkedList() : head(NULL), tail(NULL){};
   LinkedList(const LinkedList & rhs) : head(NULL), tail(NULL) {
     Node * temp = rhs.tail;
-    while (temp != NULL) {
+    while (temp != NULL) {  // add to front starting from the tail
       this->addFront(temp->data);
       temp = temp->prev;
     }
   }
   LinkedList<T> & operator=(const LinkedList<T> & rhs) {
-    if (this != &rhs) {
-      while (head != NULL) {
-        Node * temp = head->next;
+    if (this != &rhs) {            // if not equal then
+      while (head != NULL) {       // when lhs is not null
+        Node * temp = head->next;  //delete elements with temp
         delete head;
         head = temp;
       }
-      tail = NULL;
-      Node * current = rhs.tail;
+      tail = NULL;                // make lhs a null (the same as the destrucyot)
+      Node * current = rhs.tail;  // the same as the copy constructor
       while (current != NULL) {
         this->addFront(current->data);
         current = current->prev;
@@ -95,9 +95,11 @@ class LinkedList {
   }
   bool remove(const T & item) {
     LinkedList temp = *this;
-    head = rmN(item, head);
-    if (temp.getSize() == getSize()) {
-      return false;
+    head = rmN(
+        item,
+        head);  // this function returns the substring after head after removing (if finded)
+    if (temp.getSize() == getSize()) {  //compare size to see if finded
+      return false;                     // can use find() here as well
     }
     else {
       return true;
@@ -149,7 +151,7 @@ class LinkedList {
       return 0;
     }
     Node * temp = head;
-    int i = 1;
+    int i = 1;  // an early mistake as 0; draw pictures!
     while (temp->next != NULL) {
       temp = temp->next;
       i++;
