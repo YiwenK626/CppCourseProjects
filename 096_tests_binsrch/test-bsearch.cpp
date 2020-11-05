@@ -81,4 +81,5 @@ int main() {
   check(&f4, -1, 1, 0, "linear with zero point");
   check(&f4, -5, -2, -3, "linear with no zero point");
   check(&f4, 2, 5, 2, "linear with no zero point");
+  check(&f4, -2, 5, 0, "odd midpoint");
 }
