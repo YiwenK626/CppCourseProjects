@@ -1,0 +1,34 @@
+#include <cstdio>
+#include <cstdlib>
+
+#include "function.h"
+
+int binarySearhForZero(Function<int, int> * f, int low, int high) {
+  int a = f->invoke(low);
+  int b = f->invoke(high);
+  int mid;
+
+  if (a * b <= 0) {
+    if (b == 0) {
+      return b - 1;
+    }  // a<0, b>0
+    mid = (low + high) / 2;
+    int mval = f->invoke(mid);
+    if (mval >= 0) {
+      high = mval;
+      return binarySearhForZero(f, low, high);
+    }
+    else {  //mval<0, b>0
+      low = mval;
+      return binarySearhForZero(f, low, high);
+    }
+  }
+  else {
+    if (a < 0) {
+      return b - 1;
+    }
+    else {
+      return a;
+    }
+  }
+}

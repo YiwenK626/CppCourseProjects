@@ -1,0 +1,2 @@
+search: search.cpp function.h
+	g++ -o search -ggdb3 -Wal -Werror -pedantic -std=gnu++98 search.cpp funtion.h
