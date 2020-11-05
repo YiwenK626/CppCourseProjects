@@ -1,0 +1,51 @@
+#include <math.h>
+
+#include <cstdio>
+#include <cstdlib>
+
+#include "function.h"
+
+int binarySearchForZero(Function<int, int> * f, int low, int high);
+
+class CountedIntFn : public Function<int, int> {
+ protected:
+  unsigned remaining;
+  Function<int, int> * f;
+  const char * mesg;
+
+ public:
+  CountedIntFn(unsigned n, Function<int, int> * fn, const char * m) :
+      remaining(n),
+      f(fn),
+      mesg(m) {}
+  virtual int invoke(int arg) {
+    if (remaining == 0) {
+      fprintf(stderr, "Too many function invocations in %s\n", mesg);
+      exit(EXIT_FAILURE);
+    }
+    remaining--;
+    return f->invoke(arg);
+  }
+};
+
+void check(Function<int, int> * f,
+           int low,
+           int high,
+           int expected_ans,
+           const char * mesg) {
+  int remaining;  //invokation at most
+  if (high > low) {
+    remaining = log2(high - low) + 1;
+  }
+  else {
+    remaining = 1;
+  }
+  // wrap a function with its remaing and mesg
+  CountedIntFn df(remaining, f, mesg);
+
+  // check if the  calculation is correct
+  if (binarySearchForZero(f, low, high) != expected_ans) {
+    fprintf(stderr, "Wrong calculation in %s\n", mesg);
+    exit(EXIT_FAILURE);
+  }
+}
