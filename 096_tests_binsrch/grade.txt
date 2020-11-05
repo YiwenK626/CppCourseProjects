@@ -1,6 +1,6 @@
-Grading at 11/05/2020:00:51:42.965828
-For commit ID 25fd779ad3e8a05eb136be482d51332a23ff684e
-Grading at Wed Nov  4 19:51:41 EST 2020
+Grading at 11/05/2020:00:59:44.684135
+For commit ID a4a0d32238bdd41e0b7c82a9ea60c28e387d67e0
+Grading at Wed Nov  4 19:59:43 EST 2020
 **Testing broken implementation 1 **
 -------------------------------------
 
@@ -24,6 +24,19 @@ Grading at Wed Nov  4 19:51:41 EST 2020
 **Testing broken implementation 6 **
 -------------------------------------
 
-Your test program did not identify /usr/local/ece551/bin_search/bsearch6.o as broken!
 
-Overall Grade: FAILED
+**Testing broken implementation 7 **
+-------------------------------------
+
+
+**Testing broken implementation 8 **
+-------------------------------------
+
+
+**Testing correct implementation **
+-------------------------------------
+
+
+Your tests identified the problems with all broken programs
+
+Overall Grade: PASSED
