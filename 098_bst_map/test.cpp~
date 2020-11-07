@@ -1,0 +1,8 @@
+#include <cstdio>
+#include <cstdlib>
+
+#include "bstmap.h"
+
+int main() {
+  BstMap bm1;
+}
