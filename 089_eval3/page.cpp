@@ -65,8 +65,12 @@ void pStory(vector<Page> pages) {
     pPrompt();
     current->pChoices();
 
-    int i;
+    unsigned int i;
     cin >> i;
+    while (i > (current->getChoices().size())) {
+      cout << "That is not a valid choice, please try again\n";
+      cin >> i;
+    }
     current = &pages[current->getNum(i) - 1];
     current->pText();
   }
