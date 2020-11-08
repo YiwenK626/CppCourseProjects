@@ -1,8 +1,10 @@
 #include "page.h"
 
 #include <cassert>
+#include <cstring>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 using namespace std;
@@ -53,4 +55,51 @@ void pPrompt(void) {
   cout << "\n";
   cout << "What would you like to do?\n";
   cout << "\n";
+}
+
+void pStory(vector<Page> pages) {
+  Page * current = &pages[0];
+  current->pText();
+  while (current->pWL() == 0) {
+    // enter choices
+    pPrompt();
+    current->pChoices();
+
+    int i;
+    cin >> i;
+    current = &pages[current->getNum(i) - 1];
+    current->pText();
+  }
+  cout << "\n";
+  if (current->pWL() == 1) {
+    cout << "Congratulations! You have won. Hooray!\n";
+  }
+  if (current->pWL() == -1) {
+    cout << "Sorry, you have lost. Better luck next time!\n";
+  }
+  else {
+    exit(EXIT_FAILURE);
+  }
+}
+
+template<typename T>
+bool find(vector<T> v, T & i) {
+  typename vector<T>::iterator it;
+  for (it = v.begin(); it != v.end(); ++it) {
+    if (*it == i) {
+      return true;
+    }
+  }
+  return false;
+}
+
+char * filepath(char * dire, int num) {
+  stringstream fpath;
+  fpath << dire << "/page" << num << ".txt";
+  string fstring = fpath.str();
+
+  char * f = new char[fstring.length() + 1];
+  strcpy(f, fstring.c_str());
+
+  return f;
 }
