@@ -1,6 +1,6 @@
-Grading at 11/09/2020:17:15:09.198425
-For commit ID b8f1d221cb2d0abe5c1cee5c87fd090e65bf9dda
-Grading at Mon Nov  9 12:15:05 EST 2020
+Grading at 11/09/2020:17:43:55.918061
+For commit ID c9a56ce4a86afd97960e42fc985c41414e81bc73
+Grading at Mon Nov  9 12:43:51 EST 2020
 compiling
 g++ -ggdb3 -Wall -Werror -pedantic -o testFreq testFreq.cpp readFreq.cpp
 Make succeed, testFreq created
@@ -8,25 +8,25 @@ Testcase 1
 -----------------------
   - Valgrind was clean (no errors, no memory leaks)
 Checking output:
-Your file did not match the expected ouput
-**Testcase failed **
+Your file matched the expected output
+Testcase passed 
 Testcase 2
 -----------------------
   - Valgrind was clean (no errors, no memory leaks)
 Checking output:
-Your file did not match the expected ouput
-**Testcase failed **
+Your file matched the expected output
+Testcase passed 
 Testcase 3
 -----------------------
   - Valgrind was clean (no errors, no memory leaks)
 Checking output:
-Your file did not match the expected ouput
-**Testcase failed **
+Your file matched the expected output
+Testcase passed 
 Testcase 4
 -----------------------
   - Valgrind was clean (no errors, no memory leaks)
 Checking output:
-Your file did not match the expected ouput
-**Testcase failed **
+Your file matched the expected output
+Testcase passed 
 
-Overall Grade: F
+Overall Grade: A
