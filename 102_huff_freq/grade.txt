@@ -1,148 +1,32 @@
-Grading at 11/09/2020:16:49:54.772956
-For commit ID 3748e28869bdc7606aef0cb5a3ec913b4e02a620
-Grading at Mon Nov  9 11:49:50 EST 2020
+Grading at 11/09/2020:17:15:09.198425
+For commit ID b8f1d221cb2d0abe5c1cee5c87fd090e65bf9dda
+Grading at Mon Nov  9 12:15:05 EST 2020
 compiling
 g++ -ggdb3 -Wall -Werror -pedantic -o testFreq testFreq.cpp readFreq.cpp
 Make succeed, testFreq created
 Testcase 1
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==74405== Memcheck, a memory error detector
-==74405== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==74405== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==74405== Command: ./testFreq /etc/issue
-==74405== Parent PID: 74404
-==74405== 
-==74405== Conditional jump or move depends on uninitialised value(s)
-==74405==    at 0x1092DE: main (testFreq.cpp:13)
-==74405== 
-==74405== Use of uninitialised value of size 8
-==74405==    at 0x4F4362E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74405==    by 0x4F44034: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74405==    by 0x4F502B4: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74405==    by 0x109326: main (testFreq.cpp:17)
-==74405== 
-==74405== Conditional jump or move depends on uninitialised value(s)
-==74405==    at 0x4F4363B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74405==    by 0x4F44034: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74405==    by 0x4F502B4: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74405==    by 0x109326: main (testFreq.cpp:17)
-==74405== 
-==74405== 
-==74405== HEAP SUMMARY:
-==74405==     in use at exit: 0 bytes in 0 blocks
-==74405==   total heap usage: 6 allocs, 6 frees, 87,631 bytes allocated
-==74405== 
-==74405== All heap blocks were freed -- no leaks are possible
-==74405== 
-==74405== For counts of detected and suppressed errors, rerun with: -v
-==74405== Use --track-origins=yes to see where uninitialised values come from
-==74405== ERROR SUMMARY: 288 errors from 3 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Your file did not match the expected ouput
+**Testcase failed **
 Testcase 2
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==74409== Memcheck, a memory error detector
-==74409== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==74409== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==74409== Command: ./testFreq /etc/services
-==74409== Parent PID: 74408
-==74409== 
-==74409== Conditional jump or move depends on uninitialised value(s)
-==74409==    at 0x1092DE: main (testFreq.cpp:13)
-==74409== 
-==74409== Use of uninitialised value of size 8
-==74409==    at 0x4F4362E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74409==    by 0x4F44034: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74409==    by 0x4F502B4: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74409==    by 0x109326: main (testFreq.cpp:17)
-==74409== 
-==74409== Conditional jump or move depends on uninitialised value(s)
-==74409==    at 0x4F4363B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74409==    by 0x4F44034: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74409==    by 0x4F502B4: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74409==    by 0x109326: main (testFreq.cpp:17)
-==74409== 
-==74409== 
-==74409== HEAP SUMMARY:
-==74409==     in use at exit: 0 bytes in 0 blocks
-==74409==   total heap usage: 7 allocs, 7 frees, 87,712 bytes allocated
-==74409== 
-==74409== All heap blocks were freed -- no leaks are possible
-==74409== 
-==74409== For counts of detected and suppressed errors, rerun with: -v
-==74409== Use --track-origins=yes to see where uninitialised values come from
-==74409== ERROR SUMMARY: 646 errors from 3 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Your file did not match the expected ouput
+**Testcase failed **
 Testcase 3
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==74413== Memcheck, a memory error detector
-==74413== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==74413== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==74413== Command: ./testFreq /usr/share/dict/words
-==74413== Parent PID: 74412
-==74413== 
-==74413== Conditional jump or move depends on uninitialised value(s)
-==74413==    at 0x1092DE: main (testFreq.cpp:13)
-==74413== 
-==74413== Use of uninitialised value of size 8
-==74413==    at 0x4F4362E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74413==    by 0x4F44034: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74413==    by 0x4F502B4: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74413==    by 0x109326: main (testFreq.cpp:17)
-==74413== 
-==74413== Conditional jump or move depends on uninitialised value(s)
-==74413==    at 0x4F4363B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74413==    by 0x4F44034: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74413==    by 0x4F502B4: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74413==    by 0x109326: main (testFreq.cpp:17)
-==74413== 
-==74413== 
-==74413== HEAP SUMMARY:
-==74413==     in use at exit: 0 bytes in 0 blocks
-==74413==   total heap usage: 6 allocs, 6 frees, 87,631 bytes allocated
-==74413== 
-==74413== All heap blocks were freed -- no leaks are possible
-==74413== 
-==74413== For counts of detected and suppressed errors, rerun with: -v
-==74413== Use --track-origins=yes to see where uninitialised values come from
-==74413== ERROR SUMMARY: 728 errors from 3 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Your file did not match the expected ouput
+**Testcase failed **
 Testcase 4
 -----------------------
-  - Valgrind reported errors
-Valgrind reported errors (test failed).
-==74417== Memcheck, a memory error detector
-==74417== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==74417== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==74417== Command: ./testFreq /usr/share/dict/cracklib-small
-==74417== Parent PID: 74416
-==74417== 
-==74417== Conditional jump or move depends on uninitialised value(s)
-==74417==    at 0x1092DE: main (testFreq.cpp:13)
-==74417== 
-==74417== Use of uninitialised value of size 8
-==74417==    at 0x4F4362E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74417==    by 0x4F44034: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74417==    by 0x4F502B4: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74417==    by 0x109326: main (testFreq.cpp:17)
-==74417== 
-==74417== Conditional jump or move depends on uninitialised value(s)
-==74417==    at 0x4F4363B: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74417==    by 0x4F44034: std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<unsigned long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74417==    by 0x4F502B4: std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
-==74417==    by 0x109326: main (testFreq.cpp:17)
-==74417== 
-==74417== 
-==74417== HEAP SUMMARY:
-==74417==     in use at exit: 0 bytes in 0 blocks
-==74417==   total heap usage: 6 allocs, 6 frees, 87,631 bytes allocated
-==74417== 
-==74417== All heap blocks were freed -- no leaks are possible
-==74417== 
-==74417== For counts of detected and suppressed errors, rerun with: -v
-==74417== Use --track-origins=yes to see where uninitialised values come from
-==74417== ERROR SUMMARY: 522 errors from 3 contexts (suppressed: 0 from 0)
+  - Valgrind was clean (no errors, no memory leaks)
+Checking output:
+Your file did not match the expected ouput
+**Testcase failed **
 
 Overall Grade: F
