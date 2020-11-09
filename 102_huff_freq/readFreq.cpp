@@ -28,23 +28,25 @@ uint64_t * readFrequencies(const char * fname) {
   ifstream f;
   f.open(fname);
   uint64_t * dict = new uint64_t[257];
-
+  for (size_t i = 0; i < 257; i++) {
+    dict[i] = 0;
+  }
   string line;
   getline(f, line);
   while (!f.eof()) {
     unsigned char ind;
     for (size_t i = 0; i < line.length(); i++) {
       ind = line[i];
-
       //if (ind == EOF) {
       //  dict[256] = 1;
       //}
-      //if (ind >= 257 || ind < 0) {
-      //  cerr << line << ": " << i << "th char has ind as " << ind << endl;
-      //  exit(EXIT_FAILURE);
-      //}
+      if (ind < 0) {
+        cerr << line << ": " << i << "th char has ind as " << ind << endl;
+        exit(EXIT_FAILURE);
+      }
       //else {
-      dict[ind - 1]++;
+      size_t m = ind;
+      dict[m]++;
       //}
     }
     getline(f, line);
