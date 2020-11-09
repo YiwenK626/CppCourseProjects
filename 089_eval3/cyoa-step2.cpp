@@ -1,5 +1,5 @@
-#include <cassert>
 #include <cstdlib>
+#include <exception>
 #include <fstream>
 #include <iostream>
 
@@ -17,12 +17,22 @@ int main(int argc, char ** argv) {
   int i = 1;
 
   ifstream page;
-  page.open(filepath(argv[1], i));  //throw error
+  page.open(filepath(argv[1], i));
+  if (!page) {
+    cerr << "fail to find page1.txt\n";
+    exit(EXIT_FAILURE);
+  }
 
   vector<Page> pages;
   while (page.is_open()) {
-    pages.push_back(parsePage(page));
-    //check format
+    try {
+      pages.push_back(parsePage(page));
+      //check format
+    }
+    catch (const char * msg) {
+      cerr << msg << "in page" << i << ".txt\n";
+      exit(EXIT_FAILURE);
+    }
     page.close();
     i++;
     page.open(filepath(argv[1], i));
@@ -41,7 +51,10 @@ int main(int argc, char ** argv) {
       lose++;
     }
   }
-  assert(win > 0 && lose > 0);  // at least one win and one lose
+  if (!(win > 0 && lose > 0)) {  // at least one win and one lose
+    cerr << "not enough WIN or LOSE pages\n";
+    exit(EXIT_FAILURE);
+  }
 
   // each choice is valid: each element has a page
   for (vector<unsigned int>::iterator it = allChoices.begin(); it != allChoices.end();

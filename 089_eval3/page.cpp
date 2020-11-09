@@ -1,6 +1,5 @@
 #include "page.h"
 
-#include <cassert>
 #include <cstring>
 #include <fstream>
 #include <iostream>
@@ -17,15 +16,21 @@ Page parsePage(ifstream & page) {
   if (line.compare("LOSE") == 0) {
     wl = -1;
     getline(page, line);
-    assert(line[0] == '#');
+    if (line[0] != '#') {
+      throw "invalid format: no # after LOSE ";
+    }
   }
   else if (line.compare("WIN") == 0) {
     wl = 1;
     getline(page, line);
-    assert(line[0] == '#');
+    if (line[0] != '#') {
+      throw "invalid format: no # after WIN ";
+    }
   }
   else {
-    assert(isdigit(line[0]) != 0);
+    if (isdigit(line[0]) == 0) {
+      throw "invalid format: neither choices nor results ";
+    }
     rhs.push_back(parseChoice(line));
     getline(page, line);
     while (line[0] != '#') {
