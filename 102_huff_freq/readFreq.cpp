@@ -34,6 +34,8 @@ uint64_t * readFrequencies(const char * fname) {
   string line;
   getline(f, line);
   while (!f.eof()) {
+    line = line + '\n';
+
     unsigned char ind;
     for (size_t i = 0; i < line.length(); i++) {
       ind = line[i];
