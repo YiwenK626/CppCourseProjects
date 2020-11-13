@@ -1,6 +1,6 @@
-Grading at 11/13/2020:00:26:23.736058
-For commit ID 2d98ca897366faa342fadbaebf78b53179a81d08
-Grading at Thu Nov 12 19:26:23 EST 2020
+Grading at 11/13/2020:00:27:54.359950
+For commit ID 040a6e59a0d9667f9a019312c452e5a27fb40b26
+Grading at Thu Nov 12 19:27:53 EST 2020
 Doing some basic sanity checking for your submission
 
 Step 1
@@ -45,7 +45,6 @@ Line_5_did_not_match
 Line_6_did_not_match
 Line_7_did_not_match
 Line_8_did_not_match
-Line_9_did_not_match
 Your file did not match the expected ouput
 
 Step 4
