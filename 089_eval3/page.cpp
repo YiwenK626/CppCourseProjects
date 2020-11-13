@@ -91,17 +91,6 @@ void pStory(vector<Page> pages) {
   }
 }
 
-template<typename T>
-bool find(vector<T> v, T & i) {
-  typename vector<T>::iterator it;
-  for (it = v.begin(); it != v.end(); ++it) {
-    if (*it == i) {
-      return true;
-    }
-  }
-  return false;
-}
-
 char * filepath(char * dire, int num) {
   stringstream fpath;
   fpath << dire << "/page" << num << ".txt";
@@ -111,4 +100,31 @@ char * filepath(char * dire, int num) {
   strcpy(f, fstring.c_str());
 
   return f;
+}
+
+vector<Page> getPages(char * dire) {
+  int i = 1;
+
+  ifstream page;
+  page.open(filepath(dire, i));
+  if (!page) {
+    cerr << "fail to find page1.txt\n";
+    exit(EXIT_FAILURE);
+  }
+
+  vector<Page> pages;
+  while (page.is_open()) {
+    try {
+      pages.push_back(parsePage(page));
+      //check format
+    }
+    catch (const char * msg) {
+      cerr << msg << "in page" << i << ".txt\n";
+      exit(EXIT_FAILURE);
+    }
+    page.close();
+    i++;
+    page.open(filepath(dire, i));
+  }
+  return pages;
 }

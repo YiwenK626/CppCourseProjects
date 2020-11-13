@@ -7,17 +7,37 @@
 
 using namespace std;
 
+// one argv of dire
 int main(int argc, char ** argv) {
   if (argc != 2) {
     cerr << "incorrect input argruments!\n";
     exit(EXIT_FAILURE);
   }
 
-  // parse and store all pages into a vector
-  // check format when parsing pages
-  vector<Page> pages = getPages(argv[1]);
+  int i = 1;
 
-  // form a choice vector
+  ifstream page;
+  page.open(filepath(argv[1], i));
+  if (!page) {
+    cerr << "fail to find page1.txt\n";
+    exit(EXIT_FAILURE);
+  }
+
+  vector<Page> pages;
+  while (page.is_open()) {
+    try {
+      pages.push_back(parsePage(page));
+      //check format
+    }
+    catch (const char * msg) {
+      cerr << msg << "in page" << i << ".txt\n";
+      exit(EXIT_FAILURE);
+    }
+    page.close();
+    i++;
+    page.open(filepath(argv[1], i));
+  }
+  // check choice validity
   vector<unsigned int> allChoices;
   int win = 0;
   int lose = 0;
@@ -35,17 +55,5 @@ int main(int argc, char ** argv) {
     cerr << "not enough WIN or LOSE pages\n";
     exit(EXIT_FAILURE);
   }
-
-  // each choice is valid: each element has a page
-  validChoice<unsigned int>(allChoices, pages.size());
-
-  // each page is referenced: each page is in choice vector
-  for (unsigned int i = 2; i < pages.size() + 1; i++) {
-    if (!find<unsigned int>(allChoices, i)) {
-      cerr << "page " << i << " not referenced\n";
-      exit(EXIT_FAILURE);
-    }
-  }
-  // display the story
-  pStory(pages);
+  // page 1 choices, recursion
 }

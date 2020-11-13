@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <iostream>
+#include <set>
 #include <vector>
-
 using namespace std;
 class Choice {
  public:
@@ -71,7 +71,31 @@ class Page {
 void pPrompt(void);
 Page parsePage(ifstream & page);
 Choice parseChoice(string line);
-template<typename T>
-bool find(vector<T> v, T & i);
 void pStory(vector<Page> pages);
 char * filepath(char * dire, int i);
+vector<Page> getPages(char * dire);
+set<unsigned int> addSet(vector<Page> pages,
+                         set<unsigned int> container,
+                         unsigned int startpoint);
+void checkSet(int size, set<unsigned int> container);
+
+// template functions
+template<typename T>
+void validChoice(vector<T> choices, size_t MAX) {
+  for (typename vector<T>::iterator it = choices.begin(); it != choices.end(); ++it) {
+    if (*it > MAX) {
+      cerr << "exist invalid references \n";
+    }
+  }
+}
+
+template<typename T>
+bool find(vector<T> v, T & i) {
+  typename vector<T>::iterator it;
+  for (it = v.begin(); it != v.end(); ++it) {
+    if (*it == i) {
+      return true;
+    }
+  }
+  return false;
+}
