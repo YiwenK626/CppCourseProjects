@@ -1,6 +1,6 @@
-Grading at 11/13/2020:00:27:54.359950
-For commit ID 040a6e59a0d9667f9a019312c452e5a27fb40b26
-Grading at Thu Nov 12 19:27:53 EST 2020
+Grading at 11/13/2020:00:38:15.074722
+For commit ID 082556dea3f813d1247bfceeca122a0b3ad685e9
+Grading at Thu Nov 12 19:38:14 EST 2020
 Doing some basic sanity checking for your submission
 
 Step 1
@@ -25,27 +25,9 @@ Step 3
 Checking that cyoa-step3 compiles
 make: 'cyoa-step3' is up to date.
 Testing ./cyoa-step3 story1 
-Line_1_did_not_match
-Line_2_did_not_match
-Line_3_did_not_match
-Line_4_did_not_match
-Line_5_did_not_match
-Line_6_did_not_match
-Line_7_did_not_match
-Line_8_did_not_match
-Line_9_did_not_match
-Line_10_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 Testing ./cyoa-step3 cycle 
-Line_1_did_not_match
-Line_2_did_not_match
-Line_3_did_not_match
-Line_4_did_not_match
-Line_5_did_not_match
-Line_6_did_not_match
-Line_7_did_not_match
-Line_8_did_not_match
-Your file did not match the expected ouput
+Your file matched the expected output
 
 Step 4
 Checking that cyoa-step4 compiles
@@ -53,7 +35,7 @@ The code did not compile!
 
 Step 1: PASSED
 Step 2: PASSED
-Step 3: FAILED
+Step 3: PASSED
 Step 4: FAILED
 
 You have NOT passed the pregrader's test cases.
