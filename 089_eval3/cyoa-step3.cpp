@@ -52,7 +52,7 @@ void checkSet(int size, set<unsigned int> container) {
     set<unsigned int>::iterator it;
     it = container.find(i + 1);
     if (it == container.end()) {
-      cout << "Page " << i << " is not reachable\n";
+      cout << "Page " << i + 1 << " is not reachable\n";
     }
   }
 }
