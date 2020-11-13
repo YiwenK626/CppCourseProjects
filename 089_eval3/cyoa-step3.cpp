@@ -37,8 +37,6 @@ int main(int argc, char ** argv) {
   }
   set<unsigned int> reach;
   reach.insert(1);
-  // page 1 choices, recursion
-  // while
   reach = addSet(pages, reach, 1);
 
   //iterate and print out those not in the set
@@ -65,7 +63,7 @@ set<unsigned int> addSet(vector<Page> pages,
 
     for (vector<int>::iterator it = num.begin(); it != num.end(); ++it) {
       container.insert(*it);
-      addSet(pages, container, *it);
+      container = addSet(pages, container, *it);
     }
   }
 
