@@ -72,6 +72,10 @@ void pStory(vector<Page> pages) {
 
     unsigned int i;
     cin >> i;
+    if (!isdigit(i)) {
+      cerr << "You exit the game\n";
+      break;
+    }
     while (i > (current->getChoices().size())) {
       cout << "That is not a valid choice, please try again\n";
       cin >> i;
