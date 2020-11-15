@@ -49,8 +49,8 @@ void writeCompressedOutput(const char * inFile,
       cerr << "error in the Map!\n";
       exit(EXIT_FAILURE);
     }
-    BitString b = (it->second);
-    bfw.writeBitString(b);
+    //BitString b = (it->second);
+    bfw.writeBitString(it->second);
   }
   //dont forget to lookup 256 for the EOF marker, and write it out.
 
