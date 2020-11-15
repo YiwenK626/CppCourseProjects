@@ -39,14 +39,17 @@ void writeCompressedOutput(const char * inFile,
   //You need to read the input file, lookup the characters in the map,
   //and write the proper bit string with the BitFileWriter
   char c;
+  map<unsigned, BitString>::const_iterator it;
+
   while (!f.get(c).eof()) {
     unsigned char y = c;
-    if (theMap.find(y) == theMap.end()) {
+    it = theMap.find(y);
+    if (it == theMap.end()) {
       printf("%u", y);
       cerr << "error in the Map!\n";
       exit(EXIT_FAILURE);
     }
-    BitString b = (theMap.find(y)->second);
+    BitString b = (it->second);
     bfw.writeBitString(b);
   }
   //dont forget to lookup 256 for the EOF marker, and write it out.
