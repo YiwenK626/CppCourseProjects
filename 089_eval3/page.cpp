@@ -128,3 +128,86 @@ vector<Page> getPages(char * dire) {
   }
   return pages;
 }
+// check which page is not in the reachable set and print them out
+vector<Page> checkSet(set<unsigned int> container, vector<Page> pages) {
+  vector<Page> rpages = pages;
+
+  for (unsigned int i = 0; i < pages.size(); i++) {
+    set<unsigned int>::iterator it;
+    it = container.find(i + 1);
+    if (it == container.end()) {
+      cout << "Page " << i + 1 << " is not reachable\n";
+      rpages.erase(rpages.begin() + i);
+    }
+  }
+  return rpages;
+}
+
+// filter reachable pages by starting with choices in page 1
+set<unsigned int> addSet(vector<Page> pages,
+                         set<unsigned int> container,
+                         unsigned int startpoint) {
+  if (startpoint <= pages.size()) {
+    vector<int> num = pages[startpoint - 1].getChoices();
+
+    for (vector<int>::iterator it = num.begin(); it != num.end(); ++it) {
+      container.insert(*it);
+      container = addSet(pages, container, *it);
+    }
+  }
+
+  return container;
+}
+
+//return reachable pages
+vector<Page> getRpages(vector<Page> pages) {
+  set<unsigned int> reach;
+  reach.insert(1);
+  reach = addSet(pages, reach, 1);
+
+  return checkSet(reach, pages);
+}
+
+unsigned int findV(vector<unsigned int> v, unsigned int & i) {
+  for (unsigned int j = 0; j < v.size(); j++) {
+    if (v[j] == i) {
+      return j + 1;
+    }
+  }
+  return 0;
+}
+
+void pRoute(vector<Page> rpages, int endpoint) {
+  if (endpoint != 1) {
+    vector<unsigned int> ans = findRef(rpages, endpoint);
+    pRoute(rpages, ans[0]);
+
+    cout << "Page " << ans[0] << " Choice " << ans[1] << endl;
+  }
+}
+
+vector<unsigned int> findRef(vector<Page> rpages, int endpoint) {
+  for (unsigned int i = 0; i < rpages.size(); i++) {
+    vector<int> choices = rpages[i].getChoices();
+    unsigned int num = findV(choices, endpoint);
+    if (num > 0) {
+      vector<unsigned int> ans(2, 0);
+      ans[0] = i + 1;
+      ans[1] = num;
+      return ans;
+    }
+  }
+
+  cerr << "unreachable becomes reachable\n";
+  exit(EXIT_FAILURE);
+}
+
+int findWIN(vector<Page> rpages) {
+  set<int> wins;
+  for (unsigned i = 0; i < rpages.size(); i++) {
+    if (rpages[i].pWL() == 1) {
+      return i + 1;
+    }
+  }
+  return -1;
+}

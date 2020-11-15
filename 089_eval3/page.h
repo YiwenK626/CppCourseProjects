@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <list>
 #include <set>
 #include <vector>
 using namespace std;
@@ -74,10 +75,16 @@ Choice parseChoice(string line);
 void pStory(vector<Page> pages);
 char * filepath(char * dire, int i);
 vector<Page> getPages(char * dire);
+
+vector<Page> getRpages(vector<Page> pages);
 set<unsigned int> addSet(vector<Page> pages,
                          set<unsigned int> container,
                          unsigned int startpoint);
-void checkSet(int size, set<unsigned int> container);
+vector<Page> checkSet(set<unsigned int> container, vector<Page> pages);
+
+int findWIN(vector<Page> rpages);
+void pRoute(vector<Page> rpages, int endpoint);
+vector<unsigned int> findRef(vector<Page> rpages, int endpoint);
 
 // template functions
 template<typename T>
@@ -89,13 +96,4 @@ void validChoice(vector<T> choices, size_t MAX) {
   }
 }
 
-template<typename T>
-bool find(vector<T> v, T & i) {
-  typename vector<T>::iterator it;
-  for (it = v.begin(); it != v.end(); ++it) {
-    if (*it == i) {
-      return true;
-    }
-  }
-  return false;
-}
+unsigned int findV(vector<unsigned int> v, unsigned int & i);

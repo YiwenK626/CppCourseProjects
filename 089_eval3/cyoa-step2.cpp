@@ -41,7 +41,7 @@ int main(int argc, char ** argv) {
 
   // each page is referenced: each page is in choice vector
   for (unsigned int i = 2; i < pages.size() + 1; i++) {
-    if (!find<unsigned int>(allChoices, i)) {
+    if (findV(allChoices, i) == 0) {
       cerr << "page " << i << " not referenced\n";
       exit(EXIT_FAILURE);
     }

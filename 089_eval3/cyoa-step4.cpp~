@@ -1,0 +1,43 @@
+#include <cstdlib>
+#include <exception>
+#include <fstream>
+#include <iostream>
+#include <set>
+
+#include "page.h"
+
+using namespace std;
+
+// one argv of dire
+int main(int argc, char ** argv) {
+  if (argc != 2) {
+    cerr << "incorrect input argruments!\n";
+    exit(EXIT_FAILURE);
+  }
+
+  vector<Page> pages = getPages(argv[1]);
+  vector<Page> rpages = getRpages(pages);
+
+  // LinkedList
+
+  // find a WIN page
+  if (findWIN(rpages) == -1) {
+    // no WIN page
+    cout << "There is no way to win\n";
+  }
+  // has a WIN page
+  else {
+    getRoute(rpages, findWIN(rpages));
+  }
+}
+
+  void getRout(
+
+int findWIN(vector<Page> rpages){
+  for (unsigned i = 0; i < rpages.size(); i++) {
+    if (rpages[i].pWL() == 1) {
+      return i + 1;
+    }
+  }
+  return -1;
+}
