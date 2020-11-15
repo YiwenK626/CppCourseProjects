@@ -1,6 +1,6 @@
-Grading at 11/15/2020:22:32:08.187416
-For commit ID fc700e721fc76a1152596b2111a09ae05fe5f0f2
-Grading at Sun Nov 15 17:31:13 EST 2020
+Grading at 11/15/2020:22:48:28.452329
+For commit ID b7abce5e86e4e0f3aaef0712bd20f9fd9e31897e
+Grading at Sun Nov 15 17:47:34 EST 2020
 compiling
 g++ -ggdb3 -Wall -Werror -pedantic -std=gnu++98 -o compress  bitstring.o  buildTree.o  compress.o  node.o  readFreq.o
 Make succeed, compress created
@@ -20,11 +20,11 @@ Testcase 3
 -----------------------
   - Valgrind reported errors
 Valgrind reported errors (test failed).
-==131063== Memcheck, a memory error detector
-==131063== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==131063== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==131063== Command: ./compress /usr/share/dict/words theirs.3.compressed
-==131063== Parent PID: 131062
-==131063== 
+==2106== Memcheck, a memory error detector
+==2106== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2106== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==2106== Command: ./compress /usr/share/dict/words theirs.3.compressed
+==2106== Parent PID: 2105
+==2106== 
 
 Overall Grade: D
