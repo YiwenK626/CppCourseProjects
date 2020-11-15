@@ -58,8 +58,8 @@ class Page {
       cout << " " << i + 1 << ". " << choices[i].act << "\n";
     }
   }
-  vector<int> getChoices(void) {
-    vector<int> num;
+  vector<unsigned int> getChoices(void) {
+    vector<unsigned int> num;
     for (unsigned long i = 0; i < choices.size(); i++) {
       num.push_back(choices[i].num);
     }
@@ -83,8 +83,8 @@ set<unsigned int> addSet(vector<Page> pages,
 vector<Page> checkSet(set<unsigned int> container, vector<Page> pages);
 
 int findWIN(vector<Page> rpages);
-void pRoute(vector<Page> rpages, int endpoint);
-vector<unsigned int> findRef(vector<Page> rpages, int endpoint);
+void pRoute(vector<Page> rpages, unsigned int endpoint);
+vector<unsigned int> findRef(vector<Page> rpages, unsigned int endpoint);
 
 // template functions
 template<typename T>

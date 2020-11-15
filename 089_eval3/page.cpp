@@ -148,9 +148,9 @@ set<unsigned int> addSet(vector<Page> pages,
                          set<unsigned int> container,
                          unsigned int startpoint) {
   if (startpoint <= pages.size()) {
-    vector<int> num = pages[startpoint - 1].getChoices();
+    vector<unsigned int> num = pages[startpoint - 1].getChoices();
 
-    for (vector<int>::iterator it = num.begin(); it != num.end(); ++it) {
+    for (vector<unsigned int>::iterator it = num.begin(); it != num.end(); ++it) {
       container.insert(*it);
       container = addSet(pages, container, *it);
     }
@@ -175,39 +175,4 @@ unsigned int findV(vector<unsigned int> v, unsigned int & i) {
     }
   }
   return 0;
-}
-
-void pRoute(vector<Page> rpages, int endpoint) {
-  if (endpoint != 1) {
-    vector<unsigned int> ans = findRef(rpages, endpoint);
-    pRoute(rpages, ans[0]);
-
-    cout << "Page " << ans[0] << " Choice " << ans[1] << endl;
-  }
-}
-
-vector<unsigned int> findRef(vector<Page> rpages, int endpoint) {
-  for (unsigned int i = 0; i < rpages.size(); i++) {
-    vector<int> choices = rpages[i].getChoices();
-    unsigned int num = findV(choices, endpoint);
-    if (num > 0) {
-      vector<unsigned int> ans(2, 0);
-      ans[0] = i + 1;
-      ans[1] = num;
-      return ans;
-    }
-  }
-
-  cerr << "unreachable becomes reachable\n";
-  exit(EXIT_FAILURE);
-}
-
-int findWIN(vector<Page> rpages) {
-  set<int> wins;
-  for (unsigned i = 0; i < rpages.size(); i++) {
-    if (rpages[i].pWL() == 1) {
-      return i + 1;
-    }
-  }
-  return -1;
 }

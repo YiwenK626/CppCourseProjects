@@ -22,7 +22,7 @@ int main(int argc, char ** argv) {
   int win = 0;
   int lose = 0;
   for (vector<Page>::iterator it = pages.begin(); it != pages.end(); ++it) {
-    vector<int> num = it->getChoices();
+    vector<unsigned int> num = it->getChoices();
     allChoices.insert(allChoices.end(), num.begin(), num.end());
     if (it->pWL() == 1) {
       win++;
