@@ -53,11 +53,12 @@ void writeCompressedOutput(const char * inFile,
     bfw.writeBitString(b);
   }
   //dont forget to lookup 256 for the EOF marker, and write it out.
-  assert(theMap.find(256) != theMap.end());
+
+  //assert(theMap.find(256) != theMap.end());
   bfw.writeBitString((theMap.find(256))->second);
   //bitfilewriter will close the output file in its destructor
   //but you probably need to close your input file.
-  f.close();
+  //f.close();
 }
 
 int main(int argc, char ** argv) {
