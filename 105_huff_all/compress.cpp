@@ -43,7 +43,7 @@ void writeCompressedOutput(const char * inFile,
 
   while (!f.get(c).eof()) {
     unsigned char y = c;
-    it = theMap.find(y);
+    it = theMap.find(y);  // avoid repeatedly find
     if (it == theMap.end()) {
       printf("%u", y);
       cerr << "error in the Map!\n";
@@ -54,7 +54,7 @@ void writeCompressedOutput(const char * inFile,
   }
   //dont forget to lookup 256 for the EOF marker, and write it out.
 
-  //assert(theMap.find(256) != theMap.end());
+  //assert(theMap.find(256) != theMap.end()); for higher efficiency, less copy and local variable
   bfw.writeBitString((theMap.find(256))->second);
   //bitfilewriter will close the output file in its destructor
   //but you probably need to close your input file.
