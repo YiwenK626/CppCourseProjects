@@ -13,3 +13,7 @@ cyoa-step3: cyoa-step3.cpp page.cpp page.h
 
 cyoa-step4: cyoa-step4.cpp page.cpp page.h
 	g++ $(CFLAGS) -o cyoa-step4 cyoa-step4.cpp page.cpp
+
+.PHONY: clean
+clean:
+	rm -f *~ cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o

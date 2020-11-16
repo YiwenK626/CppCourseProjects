@@ -8,22 +8,22 @@ using namespace std;
 
 class Choice {
  public:
-  int num;
-  string act;
+  int num;     // page number to go to
+  string act;  // action if chosen
   Choice() : num(0), act(NULL){};
   Choice(int num, string act) : num(num), act(act){};
 };
 
 class Page {
   int ans;
-  vector<string> text;
-  vector<Choice> choices;
+  vector<string> text;     // description
+  vector<Choice> choices;  // choices
 
  public:
   Page() : ans(0), text(), choices(){};
   Page(int wl, vector<string> & desp, vector<Choice> & rhs) : ans(0), text(), choices() {
     if (wl != 0) {
-      ans = wl;
+      ans = wl;  // 1 for WIN and -1 for LOSE
     }
     else {
       for (unsigned long i = 0; i < rhs.size(); i++) {
@@ -50,16 +50,17 @@ class Page {
   }
 
   ~Page(){};
-  void pText(void) {
+  void pText(void) {  // print description by line
     for (unsigned long j = 0; j < text.size(); j++) {
       cout << text[j] << "\n";
     }
   }
-  void pChoices(void) {
+  void pChoices(void) {  // print choices by serial number
     for (unsigned long i = 0; i < choices.size(); i++) {
       cout << " " << i + 1 << ". " << choices[i].act << "\n";
     }
   }
+  // store all availble choices of a page in a vector
   vector<unsigned int> getChoices(void) {
     vector<unsigned int> num;
     for (unsigned long i = 0; i < choices.size(); i++) {
@@ -67,7 +68,9 @@ class Page {
     }
     return num;
   }
+  // return page number by serial number cin
   int getNum(int cin) { return choices[cin - 1].num; }
+  // return win/lose result if existed
   int pWL(void) { return ans; }
 };
 
