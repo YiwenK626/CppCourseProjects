@@ -3,7 +3,9 @@
 #include <list>
 #include <set>
 #include <vector>
+
 using namespace std;
+
 class Choice {
  public:
   int num;
@@ -69,31 +71,30 @@ class Page {
   int pWL(void) { return ans; }
 };
 
+// print & parse
 void pPrompt(void);
 Page parsePage(ifstream & page);
 Choice parseChoice(string line);
 void pStory(vector<Page> pages);
+
+// read inputs
 char * filepath(char * dire, int i);
 vector<Page> getPages(char * dire);
-
 vector<Page> getRpages(vector<Page> pages);
+
+// validity & reachability
 set<unsigned int> addSet(vector<Page> pages,
                          set<unsigned int> container,
                          unsigned int startpoint);
 vector<Page> checkSet(set<unsigned int> container, vector<Page> pages);
+void checkPages(vector<Page> pages);
+void validChoice(vector<unsigned int> choices, size_t MAX);
+void refPage(vector<unsigned int> chocies, size_t MAX);
 
+// get win route
 int findWIN(vector<Page> rpages);
 void pRoute(vector<Page> rpages, unsigned int endpoint);
 vector<unsigned int> findRef(vector<Page> rpages, unsigned int endpoint);
 
-// template functions
-template<typename T>
-void validChoice(vector<T> choices, size_t MAX) {
-  for (typename vector<T>::iterator it = choices.begin(); it != choices.end(); ++it) {
-    if (*it > MAX) {
-      cerr << "exist invalid references \n";
-    }
-  }
-}
-
+// helpers
 unsigned int findV(vector<unsigned int> v, unsigned int & i);
