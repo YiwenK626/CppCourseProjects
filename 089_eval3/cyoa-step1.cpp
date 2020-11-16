@@ -14,6 +14,10 @@ int main(int argc, char ** argv) {
   }
   ifstream page;
   page.open(argv[1]);
+  if (!page.is_open()) {
+    cerr << "invalid filename\n";
+    exit(EXIT_FAILURE);
+  }
   Page adv = parsePage(page);
   adv.pText();  // class member function: print description
   // if page has no win/lose
@@ -26,7 +30,7 @@ int main(int argc, char ** argv) {
     if (adv.pWL() == 1) {  // win
       cout << "Congratulations! You have won. Hooray!\n";
     }
-    if (adv.pWL() == -1) {  // lose
+    else if (adv.pWL() == -1) {  // lose
       cout << "Sorry, you have lost. Better luck next time!\n";
     }
     else {
@@ -34,4 +38,5 @@ int main(int argc, char ** argv) {
     }
     page.close();
   }
+  return EXIT_SUCCESS;
 }

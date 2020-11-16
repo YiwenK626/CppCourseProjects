@@ -24,4 +24,5 @@ int main(int argc, char ** argv) {
 
   // display the story
   pStory(pages);
+  return EXIT_SUCCESS;
 }

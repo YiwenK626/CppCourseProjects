@@ -22,4 +22,5 @@ int main(int argc, char ** argv) {
   checkPages(pages);
 
   getRpages(pages);  // filter reachable pages and print out unreachable pages
+  return EXIT_SUCCESS;
 }

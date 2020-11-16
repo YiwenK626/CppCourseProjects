@@ -59,6 +59,11 @@ Page parsePage(ifstream & page) {
 Choice parseChoice(string line) {
   size_t pos = line.find(':');
   int num = atoi(line.substr(0, pos).c_str());
+  if (num <= 0) {
+    cerr << "non-positive choice number!\n";
+    exit(EXIT_FAILURE);
+  }
+
   string act = line.substr(pos + 1);
   Choice cho(num, act);
   return cho;
@@ -102,7 +107,7 @@ void pStory(vector<Page> pages) {
   if (current->pWL() == 1) {
     cout << "Congratulations! You have won. Hooray!\n";
   }
-  if (current->pWL() == -1) {
+  else if (current->pWL() == -1) {
     cout << "Sorry, you have lost. Better luck next time!\n";
   }
   else {
@@ -121,7 +126,6 @@ char * filepath(char * dire, int num) {
 
   char * f = new char[fstring.length() + 1];
   strcpy(f, fstring.c_str());
-
   return f;
 }
 
@@ -130,7 +134,9 @@ vector<Page> getPages(char * dire) {
   int i = 1;
   // error: page1 does not exist
   ifstream page;
-  page.open(filepath(dire, i));
+  char * f = filepath(dire, i);
+  page.open(f);
+  delete[] f;
   if (!page) {
     cerr << "fail to find page1.txt\n";
     exit(EXIT_FAILURE);
@@ -150,7 +156,9 @@ vector<Page> getPages(char * dire) {
     page.close();
     // open i+1 page until it does not exist
     i++;
-    page.open(filepath(dire, i));
+    f = filepath(dire, i);
+    page.open(f);
+    delete[] f;
   }
   return pages;
 }
@@ -192,6 +200,7 @@ void validChoice(vector<unsigned int> choices, size_t MAX) {
   for (vector<unsigned int>::iterator it = choices.begin(); it != choices.end(); ++it) {
     if (*it > MAX) {
       cerr << "exist invalid references \n";
+      exit(EXIT_FAILURE);
     }
   }
 }
@@ -235,7 +244,8 @@ set<unsigned int> addSet(vector<Page> pages,
     }
   }
   else {
-    cerr << "pages out of scope!\n";  // error: pages not in 1-N
+    cerr << "choice page out of scope!\n";  // error: pages not in 1-N
+    exit(EXIT_FAILURE);
   }
   return container;
 }

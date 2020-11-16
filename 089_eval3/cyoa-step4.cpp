@@ -32,6 +32,7 @@ int main(int argc, char ** argv) {
     pRoute(rpages, win);
     cout << "Page " << win << " WIN\n";
   }
+  return EXIT_SUCCESS;
 }
 
 int findWIN(vector<Page> rpages) {
