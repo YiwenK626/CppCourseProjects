@@ -8,7 +8,7 @@
 
 using namespace std;
 
-// step3: chekc reachability //
+// step3: check reachability //
 
 int main(int argc, char ** argv) {
   if (argc != 2) {

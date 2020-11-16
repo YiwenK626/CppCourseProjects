@@ -1,5 +1,5 @@
-2:8Go to Denevieve for help.
-11:9Go to Grew for help.
+8:8Go to Denevieve for help.
+9:9Go to Grew for help.
 7:Go alone.
 #shoes
 As you take the magic shoes from the wizard's hand, he disappears in a puff
