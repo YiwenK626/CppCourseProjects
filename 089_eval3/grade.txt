@@ -1,11 +1,12 @@
-Grading at 11/16/2020:18:03:18.546715
-For commit ID f9338cc416737ffc0bfd1ec34a7d4452374cb862
-Grading at Mon Nov 16 13:03:18 EST 2020
+Grading at 11/16/2020:19:24:16.893067
+For commit ID 8064506fd864aac6e7b375d948abf436130e1d59
+Grading at Mon Nov 16 14:24:14 EST 2020
 Doing some basic sanity checking for your submission
 
 Step 1
 Checking that cyoa-step1 compiles
-make: 'cyoa-step1' is up to date.
+rm -f *~ cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -o cyoa-step1 cyoa-step1.cpp page.cpp
 Testing ./cyoa-step1 story1/page1.txt 
 Your file matched the expected output
 Testing ./cyoa-step1 story1/page8.txt 
@@ -15,7 +16,8 @@ Your file matched the expected output
 
 Step 2
 Checking that cyoa-step2 compiles
-make: 'cyoa-step2' is up to date.
+rm -f *~ cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -o cyoa-step2 cyoa-step2.cpp page.cpp
 Testing ./cyoa-step2 story1 2\n1\n
 Your file matched the expected output
 Testing ./cyoa-step2 story1 1\n4\n1\n3\n
@@ -23,6 +25,7 @@ Your file matched the expected output
 
 Step 3
 Checking that cyoa-step3 compiles
+rm -f *~ cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o
 make: 'cyoa-step3' is up to date.
 Testing ./cyoa-step3 story1 
 Your file matched the expected output
@@ -31,6 +34,7 @@ Your file matched the expected output
 
 Step 4
 Checking that cyoa-step4 compiles
+rm -f *~ cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o
 make: 'cyoa-step4' is up to date.
 Testing ./cyoa-step4 one_win 
 Your file matched the expected output
