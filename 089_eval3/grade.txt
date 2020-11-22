@@ -1,6 +1,6 @@
-Grading at 11/22/2020:01:58:59.726064
+Grading at 11/22/2020:15:52:32.596184
 For commit ID 9958ebdaf234e99aa0b8bbf1b610dc31e43aa650
-Grading at Sat Nov 21 20:58:08 EST 2020
+Grading at Sun Nov 22 10:51:39 EST 2020
 
 =========================================================================
 Step 1
@@ -210,7 +210,7 @@ Step 4
 
 Checking that cyoa-step4 compiles
 rm -f *~ cyoa-step1.o cyoa-step2.o cyoa-step3.o cyoa-step4.o
-make: 'cyoa-step4' is up to date.
+g++ -std=gnu++98 -pedantic -Wall -Werror -ggdb3 -o cyoa-step4 cyoa-step4.cpp page.cpp
 +-----------------------------------------------------------------------+
 Test case 44
 Your program successfully indicated a failure case
@@ -274,6 +274,6 @@ in each pair of header file and source file with the same name.
 Quality total                                            [9.4/10]
 
 =========================================================================
-Bonus points for early progress: 3
+Bonus points for early progress: 10
 
-Overall Grade: 96
+Overall Grade: 102
